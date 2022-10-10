@@ -21,6 +21,16 @@ Users can...
 * edit plants owned by them
 * delete plants owned by them
 
+# Model Stories
+
+Fruits, Flowers, Herbs Vegetables...
+* Have a seed of ten types
+* Can be edited by the creator
+* Can be deleted by the creator
+* Can be favorited
+* Can be commented upon
+* Can have pictures
+
 # Wireframes / Entity Relationship Diagrams
 
 ![the different screens one can click through to use the app](images/intro-wireframe.png)
