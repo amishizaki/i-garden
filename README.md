@@ -44,20 +44,24 @@ Fruits, Flowers, Herbs Vegetables...
 * Can be commented upon
 * Can have pictures
 
-## Wireframes / Entity Relationship Diagrams
+## Wireframes
 
 ![the different screens one can click through to use the app](images/intro-wireframe.png)
+
+## Entity Relationship Diagrams
+
+![ERDs](/images/erd.png)
 
 ## Schedule
 
 | Day | Task |
 | --------- | -------- |
-| Monday | Mongoose, Mongo, Express Functionality |
-| Tuesday | more of the same with error page code |
-| Wednesay | Adding visuals |
-| Thursday | Bring everything together |
-| Friday | Bug Search |
-| Saturday | BugSearch |
+| Monday | * Approval * Postmon - API setup * Models * Functionality |
+| Tuesday | * More of the same * Check Functionality |
+| Wednesay | * Adding visuals |
+| Thursday | * Bring everything together |
+| Friday | * Bug Search |
+| Saturday | * BugSearch |
 | Sunday | Polishing work |
 
 ## Back-up Ideas 
