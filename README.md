@@ -13,6 +13,16 @@ Data source is provided by https://www.growstuff.org
 Json data is parsed out by link: https://www.growstuff.org/crops/json/
 Individual routes: https://www.growstuff.org/crops/{plant.name}.json/
 
+# Technology Used
+
+* HTML 
+* CSS 
+* JS
+* MongoDB
+* Mongoose
+* Liquid 
+* Bootstrap 
+
 # User Stories
 
 Users can...
