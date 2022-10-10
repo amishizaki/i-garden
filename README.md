@@ -7,13 +7,13 @@ Ever wondered how to grow stuff? Me too! This app will help us both accomplish t
 
 *Please note that I didn't choose this option because of our Frootr app. I searched through many apis before I came full circle back to plants...*
 
-# API Source 
+## API Source 
 
-Data source is provided by https://www.growstuff.org
-Json data is parsed out by link: https://www.growstuff.org/crops/json/
-Individual routes: https://www.growstuff.org/crops/{plant.name}.json/
+* Data source is provided by https://www.growstuff.org
+* Json data is parsed out by link: https://www.growstuff.org/crops/json/
+* Individual routes: https://www.growstuff.org/crops/{plant.name}.json/
 
-# Technology Used
+## Technology Used
 
 * HTML 
 * CSS 
@@ -23,7 +23,7 @@ Individual routes: https://www.growstuff.org/crops/{plant.name}.json/
 * Liquid 
 * Bootstrap 
 
-# User Stories
+## User Stories
 
 Users can...
 * signup
@@ -35,7 +35,7 @@ Users can...
 * edit plants owned by them
 * delete plants owned by them
 
-# Model Stories
+## Model Stories
 
 Fruits, Flowers, Herbs Vegetables...
 * Can be edited by the creator
@@ -44,11 +44,11 @@ Fruits, Flowers, Herbs Vegetables...
 * Can be commented upon
 * Can have pictures
 
-# Wireframes / Entity Relationship Diagrams
+## Wireframes / Entity Relationship Diagrams
 
 ![the different screens one can click through to use the app](images/intro-wireframe.png)
 
-# Schedule
+## Schedule
 
 | Day | Task |
 | --------- | -------- |
@@ -60,7 +60,7 @@ Fruits, Flowers, Herbs Vegetables...
 | Saturday | BugSearch |
 | Sunday | Polishing work |
 
-# Back-up Idea: 
+## Back-up Ideas 
 
 Dinosaurs or Animal Crossing: New Horizons
 
