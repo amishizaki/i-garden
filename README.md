@@ -62,7 +62,7 @@ Fruits, Flowers, Herbs Vegetables...
 | Thursday | * Bring everything together |
 | Friday | * Bug Search |
 | Saturday | * BugSearch |
-| Sunday | Polishing work |
+| Sunday | * Polishing work |
 
 ## Back-up Ideas 
 
