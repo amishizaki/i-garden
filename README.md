@@ -51,7 +51,7 @@ Fruits, Flowers, Herbs Vegetables...
 # Schedule
 
 | Day | Task |
-| : --- | ---: |
+| --------- | -------- |
 | Monday | Mongoose, Mongo, Express Functionality |
 | Tuesday | more of the same with error page code |
 | Wednesay | Adding visuals |
