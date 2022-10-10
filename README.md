@@ -7,7 +7,7 @@ Ever wondered how to grow stuff? Me too! This app will help us both accomplish t
 
 *Please note that I didn't choose this option because of our Frootr app. I searched through many apis before I came full circle back to plants...
 
-# Source 
+# API Source 
 
 Data source is provided by https://www.growstuff.org
 Json data is parsed out by link: https://www.growstuff.org/crops/json/
