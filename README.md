@@ -49,6 +49,8 @@ Fruits, Flowers, Herbs Vegetables...
 ![the different screens one can click through to use the app](images/intro-wireframe.png)
 
 # Schedule
+
+| : --- | ---: |
 | Monday | Mongoose, Mongo, Express Functionality |
 | Tuesday | more of the same with error page code |
 | Wednesay | Adding visuals |
