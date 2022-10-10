@@ -1,6 +1,6 @@
 # Overview
 
-## How to Grow Stuff
+## How to Grow Stuff - iGarden
 
 ![gardner posed with garden tools](images/gardener-sleeping-on-lawn.jpeg)
 Ever wondered how to grow stuff? Me too! This app will help us both accomplish that. This app will show various plants and the conditions they need to thrive. Plants include herbs, flowers, vegetables, and fruits! Users can explore plants listed on the app and favorite them along the way.
