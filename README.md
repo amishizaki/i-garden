@@ -5,9 +5,13 @@
 ![gardner posed with garden tools](images/gardener-sleeping-on-lawn.jpeg)
 Ever wondered how to grow stuff? Me too! This app will help us both accomplish that. This app will show various plants and the conditions they need to thrive. Plants include herbs, flowers, vegetables, and fruits! Users can explore plants listed on the app and favorite them along the way.
 
-Data source is provided by https://www.growstuff.org/
-
 *Please note that I didn't choose this option because of our Frootr app. I searched through many apis before I came full circle back to plants...
+
+# Source 
+
+Data source is provided by https://www.growstuff.org
+Json data is parsed out by link: https://www.growstuff.org/crops/json/
+Individual routes: https://www.growstuff.org/crops/{plant.name}.json/
 
 # User Stories
 
@@ -24,7 +28,6 @@ Users can...
 # Model Stories
 
 Fruits, Flowers, Herbs Vegetables...
-* Have a seed of ten types
 * Can be edited by the creator
 * Can be deleted by the creator
 * Can be favorited
