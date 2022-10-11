@@ -114,38 +114,19 @@ router.put('/:id', (req, res) => {
 })
 
 // show route
-router.get('/:id', (req, res) => {
-	const plantId = req.params.id
-	// Plant.findById(plantId)
-	axios.get(`https://www.growstuff.org/crops/${plant.name}.json`)
+router.get('/:name', (req, res) => {
+	const plantName = req.params.name
+	console.log('this is the plant name', plantName)
+	axios.get(`https://www.growstuff.org/crops/${plantName}.json`)
 		.then(apiRes => {
-			const plant = apiRes.data
+			const onePlant = apiRes.data
             // const {username, loggedIn, userId} = req.session
-			res.render('plants/show', { plant })
+			res.render('plants/show', { onePlant })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
-
-// router.get('/', (req, res) => { 
-// 	// axios.get(`https://www.growstuff.org/api/v1/crops`)
-// 	axios.get(`https://www.growstuff.org/crops.json`)
-// 		.then(apiRes => {
-// 			// console.log(apiRes.data) // this is an array of objects
-// 			//declaring plants so i do not have to 'drill' as deep 
-// 			const plants = apiRes.data
-// 			console.log('this is plants', plants)
-// 			//console.log('this is the plant index', plant)
-// 			//rendering(showing all the plants from API)
-// 			res.render('plants/index', { plants })
-// 		})
-		
-// 		.catch(err=>{
-// 			console.error('Error:', err)
-// 			res.json(err)
-// 		})
-// })
 
 // delete route
 router.delete('/:id', (req, res) => {
