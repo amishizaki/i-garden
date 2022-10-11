@@ -1,0 +1,10 @@
+{
+    "editor.snippetSuggestions": "none",
+    "editor.gotoLocation.alternativeTypeDefinitionCommand": "",
+    "editor.suggest.showReferences": true,
+    "editor.suggest.showProperties": true,
+    "editor.suggest.showMethods": true,
+    "editor.hover.delay": 300,
+    "editor.hover.sticky": false,
+    "editor.hover.enabled": false
+}

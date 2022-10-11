@@ -1,5 +1,6 @@
 // Import Dependencies
 const express = require('express')
+const axios = require('axios')
 const Plant = require('../models/plant')
 
 // Create router
@@ -22,18 +23,32 @@ router.use((req, res, next) => {
 // Routes
 
 // index ALL
-router.get('/', (req, res) => {
-	Plant.find({})
-		.then(plants => {
-			const username = req.session.username
-			const loggedIn = req.session.loggedIn
-			
-			res.render('plants/index', { plants, username, loggedIn })
+router.get('/', (req, res) => { 
+	axios.get(`https://www.growstuff.org/api/v1/crops`)
+		.then(apiRes => {
+			//declaring park so i do not have to 'drill' as deep 
+			const plants = apiRes.data.data
+			console.log('this is plants', plants)
+			//console.log('this is the park index', park)
+			//rendering(showing all the parks from API)
+			res.render('plants/index', { plants })
 		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
+		
+		.catch(err=>{
+			console.error('Error:', err)
+			res.json(err)
 		})
 })
+	// Plant.find({})
+	// 	.then(plants => {
+	// 		const username = req.session.username
+	// 		const loggedIn = req.session.loggedIn
+			
+	// 		res.render('plants/index', { plants, username, loggedIn })
+	// 	})
+	// 	.catch(error => {
+	// 		res.redirect(`/error?error=${error}`)
+	// 	})
 
 // index that shows only the user's plants
 router.get('/mine', (req, res) => {

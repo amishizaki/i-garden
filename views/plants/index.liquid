@@ -5,21 +5,24 @@
     <div class="row">
         {% for plant in plants %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ plant.title }}</h5>
+            <h5 class="card-header">{{ plant.attributes.name }}</h5>
             <div class="card-body">
                 <h5 class="card-title">
-                    Ready?: {{ plant.ready }}
+                    Perennial: {{ plant.attributes.perennial }}
                 </h5>
                 <p class="card-text">
-                    Body: {{ plant.body }}
+                    Plantings: {{ plant.relationships.plantings }}
                 </p>
                 <p class="card-text">
-                    Amount: {{ plant.amount }}
+                    seeds: {{ plant.relationships.seeds }}
+                </p>
+                <p class="photo">
+                    {{ plant.relationships.photos }}
                 </p>
                 <a href="/examples/{{ plant.id }}" class="btn btn-info">
-                    View {{ plant.title }}
+                    View {{ plant.attributes.name }}
                 </a>
-            </div>
+            </div> 
         </div>
         {% endfor %}
     </div>

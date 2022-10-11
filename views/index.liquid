@@ -1,7 +1,26 @@
-{% layout "layout.liquid" %}
+{% layout 'layout.liquid' %}
 {% block content %}
-
-    <h1>Welcome!</h1>
-
-
+    {% if plants.length > 0 %}
+        <div>
+            <h2 class="display-6">All Plants</h2>
+            <div class="row">
+                {% for plant in plants %}
+                    <div class="card" style="width: 18rem;">
+                        <h5 class="card-header">{{plant.name}}</h5>
+                        <div class="card-body">
+                            {%- comment -%} <div class="colorBox" style="background-color: {{plant.color}}"> {%- endcomment -%}
+                            </div>
+                            <a class="btn btn-info" href="/plants/{{plant.id}}">
+                                View {{plant.name}}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <h2 class="display-6">No plants yet... time to add some!</h2>
+        </div>
+    {% endif %}
 {% endblock %}

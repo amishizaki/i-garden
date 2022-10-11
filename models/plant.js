@@ -7,8 +7,8 @@ const User = require('./user')
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
 
-// // importing the commentSchema
-// const commentSchema = require('./comment')
+// importing the commentSchema
+const commentSchema = require('./comment')
 
 const PlantSchema = new Schema(
 	{
