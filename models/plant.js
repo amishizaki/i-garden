@@ -13,7 +13,7 @@ const commentSchema = require('./comment')
 const PlantSchema = new Schema(
 	{
 		name: { type: String, required: true },
-		sciName: { type: String, required: true },
+		scientific_names: { type: String, required: true },
         sunniness: { type: String, required: false },
 		edible: { type: Boolean, required: true },
 		description: { type: String, required: true },

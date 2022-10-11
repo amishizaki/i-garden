@@ -8,21 +8,19 @@
             <h5 class="card-header">{{ plant.name }}</h5>
             <div class="card-body">
                 <h5 class="card-title">
-                    Perennial: {{ plant.attributes.perennial }}
-                    {{ isPerennial? 'Perenial':'Annual' }}
+                    Perennial: {{ plant.perennial }}
+                    {%- comment -%} {{ isPerennial? 'Perenial':'Annual' }} {%- endcomment -%}
                 </h5>
                 <p class="card-text">
-                    Plantings: {{ plant.relationships.plantings }}
+                    {{ plant.scientific_name }}
                 </p>
-                <p class="card-text">
-                    seeds: {{ plant.relationships.seeds }}
-                </p>
-                <p class="photo">
-                    {{ plant.relationships.photos }}
-                </p>
+                {%- comment -%} <p class="card-text">
+                    Sun Conditions: {{ plant.plantings.sunniness }}
+                </p> {%- endcomment -%}
+                <img class="img-fluid" src={{ plant.thumbnail_url }} alt={{ plant.name }}>
                 <a href="/plants/{{ plant.id }}" class="btn btn-info">
-                    View {{ plant.attributes.name }}
-                </a>
+                    View {{ plant.name }}
+                </a>  
             </div> 
         </div>
         {% endfor %}
