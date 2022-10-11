@@ -25,6 +25,7 @@ router.use((req, res, next) => {
 // index ALL
 router.get('/', (req, res) => { 
 	axios.get(`https://www.growstuff.org/api/v1/crops`)
+	// axios.get(`https://www.growstuff.org/crops.json`)
 		.then(apiRes => {
 			//declaring park so i do not have to 'drill' as deep 
 			const plants = apiRes.data.data

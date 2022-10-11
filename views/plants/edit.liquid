@@ -8,8 +8,8 @@
             <input 
                 type="text" 
                 name="title" 
-                placeholder="{{ plant.title }}"
-                value="{{ plant.title }}"
+                placeholder="{{ plant.name }}"
+                value="{{ plant.name }}"
                 class="form-control"
             >
             <label class="form-label">Body:</label>
@@ -23,19 +23,19 @@
             <label class="form-label">Amount:</label>
             <input 
                 type="number" 
-                name="amount"
-                value="{{ plant.amount }}"
+                name="sunniness"
+                value="{{ plant.sunniness }}"
                 class="form-control"
             >
             <label class="form-label">Ready:</label>
-            <input 
+            {%- comment -%} <input 
                 type="checkbox" 
                 name="ready" 
                 class="form-check-input"
                 {% if plant.ready %}
                     checked
                 {% endif %}
-            >
+            > {%- endcomment -%}
         </fieldset>
         <input type="submit" value="Edit Plant" class="btn btn-success">
     </form>

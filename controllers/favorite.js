@@ -13,7 +13,7 @@ const router = express.Router()
 // Routes
 ////////////////////////////////////////////
 // POST
-// only loggedIn users can post comments
+// only loggedIn users can favorite
 router.post("/:plantId", (req, res) => {
     const plantId = req.params.plantId
 
@@ -26,9 +26,9 @@ router.post("/:plantId", (req, res) => {
     // find a specific plant
     Plant.findById(plantId)
         // do something if it works
-        //  --> send a success response status and maybe the comment? maybe the plant?
+        //  --> send a success response status and maybe the favorited item
         .then(plant => {
-            // push the comment into the plant.comments array
+            // push the favorite into the user.favorites array
             plant.comments.push(req.body)
             // we need to save the plant
             return plant.save()
@@ -51,7 +51,7 @@ router.delete('/delete/:plantId/:commId', (req, res) => {
     // get the plant
     Plant.findById(plantId)
         .then(plant => {
-            // get the favorite
+            // get the comment
             // subdocs have a built in method that you can use to access specific subdocuments when you need to.
             // this built in method is called .id()
             const theComment = plant.comments.id(commId)
