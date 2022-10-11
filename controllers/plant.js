@@ -24,14 +24,15 @@ router.use((req, res, next) => {
 
 // index ALL
 router.get('/', (req, res) => { 
-	axios.get(`https://www.growstuff.org/api/v1/crops`)
-	// axios.get(`https://www.growstuff.org/crops.json`)
+	// axios.get(`https://www.growstuff.org/api/v1/crops`)
+	axios.get(`https://www.growstuff.org/crops.json`)
 		.then(apiRes => {
-			//declaring park so i do not have to 'drill' as deep 
-			const plants = apiRes.data.data
+			// console.log(apiRes.data) // this is an array of objects
+			//declaring plants so i do not have to 'drill' as deep 
+			const plants = apiRes.data
 			console.log('this is plants', plants)
-			//console.log('this is the park index', park)
-			//rendering(showing all the parks from API)
+			//console.log('this is the plant index', plant)
+			//rendering(showing all the plants from API)
 			res.render('plants/index', { plants })
 		})
 		

@@ -5,10 +5,11 @@
     <div class="row">
         {% for plant in plants %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ plant.attributes.name }}</h5>
+            <h5 class="card-header">{{ plant.name }}</h5>
             <div class="card-body">
                 <h5 class="card-title">
                     Perennial: {{ plant.attributes.perennial }}
+                    {{ isPerennial? 'Perenial':'Annual' }}
                 </h5>
                 <p class="card-text">
                     Plantings: {{ plant.relationships.plantings }}
@@ -19,7 +20,7 @@
                 <p class="photo">
                     {{ plant.relationships.photos }}
                 </p>
-                <a href="/examples/{{ plant.id }}" class="btn btn-info">
+                <a href="/plants/{{ plant.id }}" class="btn btn-info">
                     View {{ plant.attributes.name }}
                 </a>
             </div> 
@@ -28,3 +29,31 @@
     </div>
 </div>
 {% endblock %}
+
+{%- comment -%} This is what our plant objects look like {%- endcomment -%}
+ {%- comment -%} {
+    _index: 'crops_production_20200824003628370',
+    _type: '_doc',
+    _id: '520',
+    _score: 3.871201,
+    name: 'genovese basil',
+    description: null,
+    slug: 'genovese-basil',
+    alternate_names: [],
+    scientific_names: [ 'ocimum basilicum' ],
+    photos_count: 5,
+    plantings_count: 14,
+    harvests_count: 1,
+    planters_ids: [
+      1781,   44,  197, 134,
+       509,   41,   41, 509,
+       433, 1878, 1643,  15,
+        15,   15
+    ],
+    has_photos: true,
+    thumbnail_url: 'https://farm5.staticflickr.com/4276/34997009072_4b1598f6a9_z.jpg',
+    scientific_name: 'ocimum basilicum',
+    created_at: 1425507569,
+    id: '520'
+  }
+] {%- endcomment -%}

@@ -3,20 +3,20 @@
 <div class="container-md">
     <article>
         <h2>
-            {{ example.title }} -
-            {% if example.ready %}
+            {{ plant.name }} -
+            {%- comment -%} {% if example.ready %}
             Ready
             {% else %}
             Not Ready
-            {%endif%}
+            {%endif%} {%- endcomment -%}
         </h2>
-        <h3>Amount: {{ example.amount }}</h3>
-        <h6>Body: {{ example.body }}</h6>
-        {% if example.owner == userId %}
+        <h6>Description: {{ plant.description }}</h6>
+        <h3>Sun conditions: {{ plant.sunniness }}</h3>
+        {% if user.owner == userId %}
         <div class="btn-group">
 
-            <a href="/examples/{{ example.id }}/edit" class="btn btn-primary">Edit</a>
-            <form action="/examples/{{ example.id }}?_method=DELETE" method="POST">
+            <a href="/plants/{{ plant.id }}/edit" class="btn btn-primary">Edit</a>
+            <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
                 <input type="submit" value="Delete" class="btn btn-danger">
             </form>
         </div>
