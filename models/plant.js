@@ -13,9 +13,9 @@ const commentSchema = require('./comment')
 const PlantSchema = new Schema(
 	{
 		name: { type: String, required: true },
-		binomial_name: { type: String, required: true },
+		scientific_name: { type: String, required: true },
+		perrenial: {type: String, required: false },
         sunniness: { type: String, required: false },
-		edible: { type: Boolean, required: true },
 		description: { type: String, required: true },
 		owner: {
 			type: Schema.Types.ObjectID,

@@ -1,26 +1,13 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-    {% if plants.length > 0 %}
-        <div>
-            <h2 class="display-6">All Plants</h2>
-            <div class="row">
-                {% for plant in plants %}
-                    <div class="card" style="width: 18rem;">
-                        <h5 class="card-header">{{plant.name}}</h5>
-                        <div class="card-body">
-                            {%- comment -%} <div class="colorBox" style="background-color: {{plant.color}}"> {%- endcomment -%}
-                            </div>
-                            <a class="btn btn-info" href="/plants/{{plant.id}}">
-                                View {{plant.name}}
-                            </a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% else %}
-        <div>
-            <h2 class="display-6">No plants yet... time to add some!</h2>
-        </div>
-    {% endif %}
+    <div class="col-mb-4">
+        <h1 class="display-4">Welcome To The iGarden App</h1>
+        <p>This app is all about gardening</p>
+        <img src="/images/stone-walkway-leading-garden.jpeg" alt="image of a garden" height="200px">
+
+    </div>
+    <div class="btn-group btn-group-lg mt-4">
+        <a href="/users/signup" class="btn btn-success">Sign Up</a>
+        <a href="/users/login" class="btn btn-success">Login</a>
+    </div>
 {% endblock %}

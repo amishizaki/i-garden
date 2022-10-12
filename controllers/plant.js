@@ -87,7 +87,7 @@ router.post('/', (req, res) => {
 })
 
 // edit route -> GET that takes us to the edit form view
-router.get('/:id/edit', (req, res) => {
+router.get('/:name/edit', (req, res) => {
 	// we need to get the id
 	const plantId = req.params.id
 	Plant.findById(plantId)
@@ -100,7 +100,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // update route
-router.put('/:id', (req, res) => {
+router.put('/:name', (req, res) => {
 	const plantId = req.params.id
 	req.body.ready = req.body.ready === 'on' ? true : false
 

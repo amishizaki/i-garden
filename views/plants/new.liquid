@@ -10,36 +10,37 @@
                 type="text" 
                 name="name"
                 required="true" 
-                placeholder="enter plant name"
+                placeholder="Enter plant name"
             >
             <label class="form-label">Scientific Name:</label>
             <input 
                 class="form-control"
                 type="string" 
-                name="binomial_name" 
-                placeholder="enter plant's scientific name" 
+                name="scientific_name" 
+                placeholder="Enter plant's scientific name" 
             >
-            <label class="form-label">Sun conditions:</label>
-            {%- comment -%} <input  {%- endcomment -%}
-            <div class="btn-group">
-                <button 
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button" 
-                    data-bs-toggle="dropdown" 
-                    data-bs-auto-close="outside" 
-                    aria-expanded="false">
-                    More sun or more shade
-                </button>
-                {%- comment -%} name="sun_requirements" {%- endcomment -%}
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Full sun</a></li>
-                    <li><a class="dropdown-item" href="#">Part sun</a></li>
-                    <li><a class="dropdown-item" href="#">Part shade</a></li>
-                    <li><a class="dropdown-item" href="#">Full shade</a></li>
-                </ul>
-                    {%- comment -%} enum= "['Full sun', 'Part sun', 'Part shade', 'Full shade']" {%- endcomment -%}
-            </div>
-            {%- comment -%} > {%- endcomment -%}
+            <label class="form-label">Description:</label>
+            <textarea 
+                class="form-control"
+                type="string" 
+                name="description" 
+                placeholder="Describe plant here" 
+            ></textarea>
+            <label class="form-label">Perennial or Annual:</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Perennial or Annual</option>
+                <option value="Perennial">Perennial</option>
+                <option value="Annual">Annual</option>
+            </select>
+            <label class="form-label">Sun conditions:</label><br>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>More sun or more shade</option>
+                <option value="Full sun">Full sun</option>
+                <option value="Part sun">Part sun</option>
+                <option value="Part shade">Part shade</option>
+                <option value="Full shade">Full shade</option>
+            </select>
+            {%- comment -%} Can I add an image input option here? {%- endcomment -%}
             {%- comment -%} <label class="form-label">Ready:</label>
             <input 
                 type="checkbox" 
