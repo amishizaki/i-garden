@@ -16,6 +16,7 @@
         {% endif %}
         </h4>
         <h5>Sun requirements: {{ plant.openfarm_data.attributes.sun_requirements }}</h5>
+        {%- comment -%} should this be author? {%- endcomment -%}
         {% if user.owner == userId %}
         <div class="btn-group">
             <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>
