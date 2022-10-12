@@ -119,9 +119,10 @@ router.get('/:name', (req, res) => {
 	console.log('this is the plant name', plantName)
 	axios.get(`https://www.growstuff.org/crops/${plantName}.json`)
 		.then(apiRes => {
+			console.log('this is the api res', apiRes)
 			const onePlant = apiRes.data
             // const {username, loggedIn, userId} = req.session
-			res.render('plants/show', { onePlant })
+			res.render('plants/show', { plant:onePlant })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)

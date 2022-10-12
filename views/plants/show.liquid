@@ -4,18 +4,20 @@
     <article>
         <h2>
             {{ plant.name }}
-            {%- comment -%} {% if example.ready %}
-            Ready
-            {% else %}
-            Not Ready
-            {%endif%} {%- endcomment -%}
         </h2>
-        <h6>{{ plant.description }}</h6>
-        <h3>Sun conditions: {{ plant.sunniness }}</h3>
+        <h3>{{ plant.openfarm.attributes.binomial_name }}</h3>
+        <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.openfarm.attributes.main_image_path }} alt={{ plant.name }}>
+        <h4>{{ plant.openfarm.attributes.description }}</h4>
+        {%- comment -%} <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
+        {% if plant.perennial == 'true' %}
+            Perennial
+        {% else %}
+            Annual
+        {% endif %}
+        <h5>Sun requirements: {{ plant.openfarm.attributes.sun_requirements }}</h5>
         {% if user.owner == userId %}
         <div class="btn-group">
-
-            <a href="/plants/{{ plant.id }}/edit" class="btn btn-primary">Edit</a>
+            <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>
             <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
                 <input type="submit" value="Delete" class="btn btn-danger">
             </form>
@@ -24,3 +26,10 @@
     </article>
 </div>
 {% endblock %}
+
+{%- comment -%} keep this just in case {%- endcomment -%}
+            {%- comment -%} {% if example.ready %}
+            Ready
+            {% else %}
+            Not Ready
+            {%endif%} {%- endcomment -%}
