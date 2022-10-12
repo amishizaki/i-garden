@@ -4,6 +4,7 @@
     <h2 class="display-6">All Plants</h2>
     <div class="row">
         {% for plant in plants %}
+        {%- comment -%} How can I get {{ plant.thumbnail_url }} as the background-image? background-image:{{ plant.thumbnail_url }} didn't work. {%- endcomment -%}
         <div class="card" style="width: 18rem; background-color: rgb(142, 219, 142)">
             <h5 class="card-header">{{ plant.name }}</h5>
             <div class="card-body">
