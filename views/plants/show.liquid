@@ -5,16 +5,17 @@
         <h2>
             {{ plant.name }}
         </h2>
-        <h3>{{ plant.openfarm.attributes.binomial_name }}</h3>
-        <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.openfarm.attributes.main_image_path }} alt={{ plant.name }}>
-        <h4>{{ plant.openfarm.attributes.description }}</h4>
+        <h3>{{ plant.openfarm_data.attributes.binomial_name }}</h3>
+        <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
+        <h4>{{ plant.openfarm_data.attributes.description }}</h4>
         {%- comment -%} <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
-        {% if plant.perennial == 'true' %}
+        <h4>{% if plant.perennial == 'true' %}
             Perennial
         {% else %}
             Annual
         {% endif %}
-        <h5>Sun requirements: {{ plant.openfarm.attributes.sun_requirements }}</h5>
+        </h4>
+        <h5>Sun requirements: {{ plant.openfarm_data.attributes.sun_requirements }}</h5>
         {% if user.owner == userId %}
         <div class="btn-group">
             <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>

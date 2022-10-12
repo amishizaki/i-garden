@@ -6,25 +6,40 @@
             <legend>Create New Plant</legend>
             <label class="form-label">Name: </label>
             <input 
-                type="text" 
-                name="name" 
-                placeholder="enter plant name"
                 class="form-control"
+                type="text" 
+                name="name"
+                required="true" 
+                placeholder="enter plant name"
             >
             <label class="form-label">Scientific Name:</label>
             <input 
-                type="text" 
-                name="sciName" 
+                class="form-control"
+                type="string" 
+                name="binomial_name" 
                 placeholder="enter plant's scientific name" 
-                class="form-control"
             >
-            <label class="form-label">Sun conditions required:</label>
-            <input 
-                type="number" 
-                name="amount"
-                placeholder="enter percentage" 
-                class="form-control"
-            >
+            <label class="form-label">Sun conditions:</label>
+            {%- comment -%} <input  {%- endcomment -%}
+            <div class="btn-group">
+                <button 
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button" 
+                    data-bs-toggle="dropdown" 
+                    data-bs-auto-close="outside" 
+                    aria-expanded="false">
+                    More sun or more shade
+                </button>
+                {%- comment -%} name="sun_requirements" {%- endcomment -%}
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Full sun</a></li>
+                    <li><a class="dropdown-item" href="#">Part sun</a></li>
+                    <li><a class="dropdown-item" href="#">Part shade</a></li>
+                    <li><a class="dropdown-item" href="#">Full shade</a></li>
+                </ul>
+                    {%- comment -%} enum= "['Full sun', 'Part sun', 'Part shade', 'Full shade']" {%- endcomment -%}
+            </div>
+            {%- comment -%} > {%- endcomment -%}
             {%- comment -%} <label class="form-label">Ready:</label>
             <input 
                 type="checkbox" 

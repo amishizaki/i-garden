@@ -116,11 +116,12 @@ router.put('/:id', (req, res) => {
 // show route
 router.get('/:name', (req, res) => {
 	const plantName = req.params.name
-	console.log('this is the plant name', plantName)
+	// console.log('this is the plant name', plantName)
 	axios.get(`https://www.growstuff.org/crops/${plantName}.json`)
 		.then(apiRes => {
-			console.log('this is the api res', apiRes)
+			// console.log('this is the api res', apiRes)
 			const onePlant = apiRes.data
+			console.log('this is the plant', onePlant)
             // const {username, loggedIn, userId} = req.session
 			res.render('plants/show', { plant:onePlant })
 		})
