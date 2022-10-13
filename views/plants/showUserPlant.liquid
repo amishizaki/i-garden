@@ -1,0 +1,37 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div class="container-md">
+    <article>
+        <h2>
+            {{ plant.name }}
+        </h2>
+        <h3>{{ plant.scientific_name }}</h3>
+        <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.image }} alt={{ plant.name }}>
+        <h4>{{ plant.description }}</h4>
+        {%- comment -%} <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
+        <h4>{% if plant.perennial == 'true' %}
+            Perennial
+        {% else %}
+            Annual
+        {% endif %}
+        </h4>
+        <h5>Sun requirements: {{ plant.sunniness }}</h5>
+        {%- comment -%} should this be author? {%- endcomment -%}
+        {% if user.owner == userId %}
+        <div class="btn-group">
+            <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>
+            <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </div>
+        {% endif %}
+    </article>
+</div>
+{% endblock %}
+
+{%- comment -%} keep this just in case {%- endcomment -%}
+            {%- comment -%} {% if example.ready %}
+            Ready
+            {% else %}
+            Not Ready
+            {%endif%} {%- endcomment -%}

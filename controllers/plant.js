@@ -2,6 +2,7 @@
 const express = require('express')
 const axios = require('axios')
 const Plant = require('../models/plant')
+const { index } = require('../models/comment')
 
 // Create router
 const router = express.Router()
@@ -26,14 +27,15 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => { 
 	// axios.get(`https://www.growstuff.org/api/v1/crops`)
 	axios.get(`https://www.growstuff.org/crops.json`)
-		.then(apiRes => {
+	.then(apiRes => {
+			const { username, userId, loggedIn } = req.session
 			// console.log(apiRes.data) // this is an array of objects
 			//declaring plants so i do not have to 'drill' as deep 
 			const plants = apiRes.data
-			console.log('this is plants', plants)
+			// console.log('this is plants', plants)
 			//console.log('this is the plant index', plant)
 			//rendering(showing all the plants from API)
-			res.render('plants/index', { plants })
+			res.render('plants/index', { plants, username, loggedIn, userId })
 		})
 		
 		.catch(err=>{
@@ -58,7 +60,7 @@ router.get('/mine', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	Plant.find({ owner: userId })
 		.then(plants => {
-			res.render('plants/index', { plants, username, loggedIn })
+			res.render('plants/index', { plants, username, userId, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -74,11 +76,12 @@ router.get('/new', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
 	req.body.ready = req.body.ready === 'on' ? true : false
-
+	
 	req.body.owner = req.session.userId
 	Plant.create(req.body)
 		.then(plant => {
 			console.log('this was returned from create', plant)
+			// should I have this redirect or render the new plant page?
 			res.redirect('/plants')
 		})
 		.catch(error => {
@@ -88,11 +91,12 @@ router.post('/', (req, res) => {
 
 // edit route -> GET that takes us to the edit form view
 router.get('/:name/edit', (req, res) => {
+	const { username, userId, loggedIn } = req.session
 	// we need to get the id
 	const plantId = req.params.id
 	Plant.findById(plantId)
 		.then(plant => {
-			res.render('plants/edit', { plant })
+			res.render('plants/edit', { plant, username, userId, loggedIn })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -101,6 +105,7 @@ router.get('/:name/edit', (req, res) => {
 
 // update route
 router.put('/:name', (req, res) => {
+	
 	const plantId = req.params.id
 	req.body.ready = req.body.ready === 'on' ? true : false
 
@@ -117,15 +122,28 @@ router.put('/:name', (req, res) => {
 router.get('/:name', (req, res) => {
 	const plantName = req.params.name
 	// console.log('this is the plant name', plantName)
+	const { username, userId, loggedIn } = req.session
 	axios.get(`https://www.growstuff.org/crops/${plantName}.json`)
 		.then(apiRes => {
 			// console.log('this is the api res', apiRes)
 			const onePlant = apiRes.data
 			console.log('this is the plant', onePlant)
             // const {username, loggedIn, userId} = req.session
-			res.render('plants/show', { plant:onePlant })
+			res.render('plants/show', { plant:onePlant, username, userId, loggedIn })
 		})
 		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+// show user created plants
+router.get('/mine/:id', (req, res) => {
+	const { username, userId, loggedIn } = req.session
+	Plant.findById(req.params.id)
+		.then(plant => {
+			res.render('plants/showUserPlant', { plant, username, userId, loggedIn })
+		})
+		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
