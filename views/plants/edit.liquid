@@ -3,41 +3,48 @@
 <div class="container-sm">
     <form action="/plants" method="POST">
         <fieldset>
-            <legend>Edit Plant</legend>
-            <label class="form-label">Title: </label>
+            <legend>Edit {{plant.name}}</legend>
+            <label class="form-label">Name: </label>
             <input 
+                class="form-control"
                 type="text" 
-                name="title" 
+                name="name" 
                 placeholder="{{ plant.name }}"
                 value="{{ plant.name }}"
+            >
+            <label class="form-label">Scientific Name: </label>
+            <input 
                 class="form-control"
+                type="text" 
+                name="scientific_name" 
+                placeholder="{{ plant.scientific_name }}"
+                value="{{ plant.scientific_name }}"
             >
             <label class="form-label">Description:</label>
-            <input 
-                type="text" 
+            <textarea 
+                class="form-control"
+                type="string" 
                 name="description" 
                 placeholder="{{ plant.description }}" 
                 value="{{ plant.description }}" 
-                class="form-control"
-            >
-            <label class="form-label">Amount:</label>
-            <input 
-                type="number" 
-                name="sun_requirement"
-                value="{{ plant.sun_requirement }}"
-                class="form-control"
-            >
+            ></textarea>
+            <label class="form-label">Perennial or Annual:</label>
+            <select class="form-select" aria-label="Default select example" name="perrenial">
+                <option selected>Perennial or Annual</option>
+                <option value="Perennial">Perennial</option>
+                <option value="Annual">Annual</option>
+            </select>
+            <label class="form-label">Sun conditions:</label><br>
+            <select class="form-select" aria-label="Default select example" name="sun_requirement">
+                <option selected aria-placeholder=""></option>
+                <option value="Full sun">Full sun</option>
+                <option value="Part sun">Part sun</option>
+                <option value="Part shade">Part shade</option>
+                <option value="Full shade">Full shade</option>
+            </select>
             <label class="form-label">Ready:</label>
-            {%- comment -%} <input 
-                type="checkbox" 
-                name="ready" 
-                class="form-check-input"
-                {% if plant.ready %}
-                    checked
-                {% endif %}
-            > {%- endcomment -%}
         </fieldset>
-        <input type="submit" value="Edit Plant" class="btn btn-success">
+        <input type="submit" value="Edit {{plant.name}}" class="btn btn-success">
     </form>
 </div>
 {% endblock %}

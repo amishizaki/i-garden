@@ -23,6 +23,7 @@ middleware(app)
 //    Routes      //
 ////////////////////
 
+app.use(express.static('public'))
 app.use('/auth', UserRouter)
 app.use('/comments', CommentRouter)
 app.use('/plants', PlantRouter)

@@ -50,7 +50,7 @@ router.get('/mine', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	Plant.find({ owner: userId })
 		.then(plants => {
-			res.render('plants/index', { plants, username, userId, loggedIn })
+			res.render('plants/userIndex', { plants, username, userId, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -108,11 +108,23 @@ router.put('/:name', (req, res) => {
 		})
 })
 
+// show user created plants
+router.get('/mine/:id', (req, res) => {
+	const { username, userId, loggedIn } = req.session
+	Plant.findById(req.params.id)
+		.then(plant => {
+			res.render('plants/showUserPlant', { plant, username, userId, loggedIn })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
 // show route
-router.get('/:name', (req, res) => {
-	const plantName = req.params.name
+router.get('/:id', (req, res) => {
+	const plantId = req.params.id
 	// console.log('this is the plant name', plantName)
-	axios.get(`https://www.growstuff.org/crops/${plantName}.json`)
+	axios.get(`https://www.growstuff.org/crops/${plantId}.json`)
 	.then(apiRes => {
 			const { username, userId, loggedIn } = req.session
 			// console.log('this is the api res', apiRes)
@@ -122,18 +134,6 @@ router.get('/:name', (req, res) => {
 			res.render('plants/show', { plant:onePlant, username, userId, loggedIn })
 		})
 		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
-
-// show user created plants
-router.get('/mine/:id', (req, res) => {
-	const { username, userId, loggedIn } = req.session
-	Plant.findById(req.params.id)
-		.then(plant => {
-			res.render('plants/showUserPlant', { plant, username, userId, loggedIn })
-		})
-		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
 })

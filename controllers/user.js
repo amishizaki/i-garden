@@ -46,7 +46,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
 	// console.log('request object', req)
 	// get the data from the request body
-	console.log('req.body', req.body);
+	// console.log('req.body', req.body);
 	
 	const { username, password } = req.body
 	// then we search for the user
@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
 					req.session.loggedIn = true
 					req.session.userId = user.id
 
-          			const { username, loggedIn, userId } = req.session
+          			// const { username, loggedIn, userId } = req.session
 
 					console.log('session user id', req.session.userId)
 					// redirect to /examples if login is successful
@@ -94,6 +94,32 @@ router.get('/logout', (req, res) => {
 		res.redirect('/')
 	})
 })
+
+
+// // GET
+// // SENDS to the logout page
+// router.get('/logout', (req, res) => {
+//     const username = req.session.username
+//     const loggedIn = req.session.loggedIn
+//     const userId = req.session.userId
+
+//     res.render('users/logout', { username, loggedIn, userId})
+// })
+
+
+// // DELETE -> runs the logout
+// // /users/logout
+// // a route for log out 
+// router.delete('/logout', (req, res) => {
+//     // destroy the session(eventually we'll redirect)
+//     req.session.destroy(err => {
+//         // console.log('req.session after logout', req.session)
+//         // console.log('err on logout?', err)
+
+//         // res.sendStatus(204)
+//         res.redirect('/')
+//     })
+// })
 
 // Export the Router
 module.exports = router
