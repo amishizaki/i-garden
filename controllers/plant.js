@@ -43,16 +43,6 @@ router.get('/', (req, res) => {
 			res.json(err)
 		})
 })
-	// Plant.find({})
-	// 	.then(plants => {
-	// 		const username = req.session.username
-	// 		const loggedIn = req.session.loggedIn
-			
-	// 		res.render('plants/index', { plants, username, loggedIn })
-	// 	})
-	// 	.catch(error => {
-	// 		res.redirect(`/error?error=${error}`)
-	// 	})
 
 // index that shows only the user's plants
 router.get('/mine', (req, res) => {
@@ -122,9 +112,9 @@ router.put('/:name', (req, res) => {
 router.get('/:name', (req, res) => {
 	const plantName = req.params.name
 	// console.log('this is the plant name', plantName)
-	const { username, userId, loggedIn } = req.session
 	axios.get(`https://www.growstuff.org/crops/${plantName}.json`)
-		.then(apiRes => {
+	.then(apiRes => {
+			const { username, userId, loggedIn } = req.session
 			// console.log('this is the api res', apiRes)
 			const onePlant = apiRes.data
 			console.log('this is the plant', onePlant)
