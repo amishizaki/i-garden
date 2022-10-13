@@ -29,24 +29,25 @@
             <label class="form-label">Perennial or Annual:</label>
             <select class="form-select" aria-label="Default select example" name="perrenial">
                 <option selected>Perennial or Annual</option>
-                <option value="Perennial">Perennial</option>
-                <option value="Annual">Annual</option>
+                <option class="form-control" type="string" value="Perennial">Perennial</option>
+                <option class="form-control" type="string" value="Annual">Annual</option>
             </select>
-            <label class="form-label">Sun conditions:</label><br>
+            <label class="form-label">Sun conditions:</label>
             <select class="form-select" aria-label="Default select example" name="sun_requirement">
                 <option selected>More sun or more shade</option>
-                <option value="Full sun">Full sun</option>
-                <option value="Part sun">Part sun</option>
-                <option value="Part shade">Part shade</option>
-                <option value="Full shade">Full shade</option>
+                <option class="form-control" type="string" value="Full sun">Full sun</option>
+                <option class="form-control" type="string" value="Part sun">Part sun</option>
+                <option class="form-control" type="string" value="Part shade">Part shade</option>
+                <option class="form-control" type="string" value="Full shade">Full shade</option>
             </select>
-            {%- comment -%} Can I add an image input option here? {%- endcomment -%}
-            {%- comment -%} <label class="form-label">Ready:</label>
-            <input 
-                type="checkbox" 
-                name="ready" 
-                class="form-check-input"
-            > {%- endcomment -%}
+            <label class="form-label">Add image:</label><br>
+            <div class="col-sm-2 imgUp">
+                <div class="imagePreview"></div>
+                <label class="btn btn-primary">Upload
+                <input class="uploadFile img form-control" type="file" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;">
+                </label>
+                <i class="fa fa-times del"></i>
+            </div>'
         </fieldset>
         <input type="submit" value="Create New Plant" class="btn btn-success">
     </form>

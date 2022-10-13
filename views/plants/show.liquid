@@ -6,9 +6,13 @@
             {{ plant.name }}
         </h2>
         <h3>{{ plant.openfarm_data.attributes.binomial_name }}</h3>
-        <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
+        {% if plant.openfarm_data.attributes.main_image_path == null %}
+            <h4>(No image yet...)</h4>
+        {% else %}
+            <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
+        {% endif %}
         <h4>{{ plant.openfarm_data.attributes.description }}</h4>
-        {%- comment -%} <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
+        {%- comment -%} this is shorthand for below, but it wasn't working <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
         <h4>{% if plant.perennial == 'true' %}
             Perennial
         {% else %}

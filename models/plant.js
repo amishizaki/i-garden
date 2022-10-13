@@ -14,9 +14,10 @@ const PlantSchema = new Schema(
 	{
 		name: { type: String, required: true },
 		scientific_name: { type: String, required: true },
-		description: { type: String, required: true },
+		description: { type: String, required: false },
 		perrenial: {type: String, required: false },
         sun_requirement: { type: String, required: false },
+		image: { type: Object, required: false },
 		owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',
