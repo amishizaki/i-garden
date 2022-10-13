@@ -3,7 +3,7 @@
 <div class="container-sm">
     <form action="/plants" method="POST">
         <fieldset>
-            <legend>Create New Plant</legend>
+            <legend>Edit Plant</legend>
             <label class="form-label">Title: </label>
             <input 
                 type="text" 
@@ -12,19 +12,19 @@
                 value="{{ plant.name }}"
                 class="form-control"
             >
-            <label class="form-label">Body:</label>
+            <label class="form-label">Description:</label>
             <input 
                 type="text" 
-                name="body" 
-                placeholder="{{ plant.body }}" 
-                value="{{ plant.body }}" 
+                name="description" 
+                placeholder="{{ plant.description }}" 
+                value="{{ plant.description }}" 
                 class="form-control"
             >
             <label class="form-label">Amount:</label>
             <input 
                 type="number" 
-                name="sunniness"
-                value="{{ plant.sunniness }}"
+                name="sun_requirement"
+                value="{{ plant.sun_requirement }}"
                 class="form-control"
             >
             <label class="form-label">Ready:</label>
