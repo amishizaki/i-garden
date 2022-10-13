@@ -13,12 +13,12 @@
         <h5>Sun requirements: {{ plant.sun_requirement }}</h5>
         {%- comment -%} should this be author? {%- endcomment -%}
         {% if user.owner == userId %}
-        <div class="btn-group">
-            <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>
-            <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
-                <input type="submit" value="Delete" class="btn btn-danger">
-            </form>
-        </div>
+            <div class="btn-group">
+                <a href="/plants/{{ plant.id }}/edit" class="btn btn-primary">Edit</a>
+                <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </div>
         {% endif %}
     </article>
 </div>

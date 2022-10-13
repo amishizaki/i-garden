@@ -59,8 +59,11 @@ router.get('/mine', (req, res) => {
 
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
-	const { username, userId, loggedIn } = req.session
-	res.render('plants/new', { username, loggedIn })
+	const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    const userId = req.session.userId
+	console.log('this is the userId', userId)
+	res.render('plants/new', { username, loggedIn, userId })
 })
 
 // create -> POST route that actually calls the db and makes a new document
