@@ -1,36 +1,86 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
-    <article>
-        <h2>
-            {{ plant.name }}
-        </h2>
-        <h3>{{ plant.openfarm_data.attributes.binomial_name }}</h3>
-        {% if plant.openfarm_data.attributes.main_image_path == null %}
-            <h4>(No image yet...)</h4>
-        {% else %}
-            <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
-        {% endif %}
-        <h4>{{ plant.openfarm_data.attributes.description }}</h4>
-        {%- comment -%} this is shorthand for below, but it wasn't working <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
-        <h4>{% if plant.perennial == 'true' %}
-            Perennial
-        {% else %}
-            Annual
-        {% endif %}
-        </h4>
-        <h5>Sun requirements: {{ plant.openfarm_data.attributes.sun_requirements }}</h5>
-        {%- comment -%} should this be author? {%- endcomment -%}
-        {% if user.owner == userId %}
-            <div class="btn-group">
-                <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>
-                <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="btn btn-danger">
+    <div class="container-md">
+        <article>
+            {%- comment -%} <hr>
+            <h4>comments</h4>
+            <hr> {%- endcomment -%}
+            {% if loggedIn %}
+                <div class="col-md-6">
+                    <form action="/favorites/{{plant.id}}" method="POST">
+                    <input class="btn btn-success" type="submit" value="add to favorites <3">
+                    </form>
+                </div>
+            {% else %}
+                <div class="col-md-6">
+                    <small>If you'd like to favorite, please log in...</small>
+                </div>
+            {% endif %}
+            <hr>
+            <h2>
+                {{ plant.name }}
+            </h2>
+            <h3>{{ plant.openfarm_data.attributes.binomial_name }}</h3>
+            {% if plant.openfarm_data.attributes.main_image_path == null %}
+                <h4>(No image yet...)</h4>
+            {% else %}
+                {%- comment -%}  centers image, but removes blocking: position-absolute top-50 start-50 translate-middle {%- endcomment -%}
+                {%- comment -%} rounded feature is not working - why? {%- endcomment -%}
+                <img class="img-fluid rounded-5 mx-auto" style="width: 50%; height: auto;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
+            {% endif %}
+            <h4>{{ plant.openfarm_data.attributes.description }}</h4>
+            {%- comment -%} this is shorthand for below, but it wasn't working <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
+            <h4>{% if plant.perennial == 'true' %}
+                Perennial
+            {% else %}
+                Annual
+            {% endif %}
+            </h4>
+            <h5>Sun requirements: {{ plant.openfarm_data.attributes.sun_requirements }}</h5>
+            {%- comment -%} should this be author? {%- endcomment -%}
+            {% if user.owner == userId %}
+                <div class="btn-group">
+                    <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>
+                    <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </div>
+            {% endif %}
+        </article>
+        {%- comment -%} <hr>
+        <h4>comments</h4>
+        <hr> {%- endcomment -%}
+        {% if loggedIn %}
+            <div class="col-md-6">
+                <form action="/comments/{{plant.id}}" method="POST">
+                    <fieldset>
+                        <legend>Add Comment</legend>
+                        <label class="form-label">comment:</label>
+                        <input class="form-control mb-1" type="text" placeholder="comment goes here..." name="note" required>
+                    </fieldset>
+                    <input class="btn btn-success" type="submit" value="add comment">
                 </form>
             </div>
+        {% else %}
+            <div class="col-md-6">
+                <small>If you'd like to leave a comment, please log in...</small>
+            </div>
         {% endif %}
-    </article>
-</div>
+        <hr>
+        {% if plant.comments.length > 0%}
+            <div class="container-sm justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    {% for comment in plant.comments %}
+                        {% render '../comment.liquid', comment: comment, userId: userId, plant: plant %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <small>no comments yet...</small>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 {% endblock %}
 
 {%- comment -%} keep this just in case {%- endcomment -%}

@@ -3,6 +3,7 @@ const express = require('express')
 const axios = require('axios')
 const Plant = require('../models/plant')
 const { index } = require('../models/comment')
+// is {index} supposed to be something else?
 
 // Create router
 const router = express.Router()
@@ -27,7 +28,7 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => { 
 	// axios.get(`https://www.growstuff.org/api/v1/crops`)
 	axios.get(`https://www.growstuff.org/crops.json`)
-	.then(apiRes => {
+		.then(apiRes => {
 			const { username, userId, loggedIn } = req.session
 			// console.log(apiRes.data) // this is an array of objects
 			//declaring plants so i do not have to 'drill' as deep 
@@ -83,7 +84,7 @@ router.post('/', (req, res) => {
 })
 
 // edit route -> GET that takes us to the edit form view
-router.get('/:name/edit', (req, res) => {
+router.get('/:id/edit', (req, res) => {
 	const { username, userId, loggedIn } = req.session
 	// we need to get the id
 	const plantId = req.params.id
@@ -91,6 +92,9 @@ router.get('/:name/edit', (req, res) => {
 		.then(plant => {
 			res.render('plants/edit', { plant, username, userId, loggedIn })
 		})
+		// .then(() => {
+		// 	res.redirect('/:id')
+		// })
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
 		})
@@ -128,11 +132,11 @@ router.get('/:id', (req, res) => {
 	const plantId = req.params.id
 	// console.log('this is the plant name', plantName)
 	axios.get(`https://www.growstuff.org/crops/${plantId}.json`)
-	.then(apiRes => {
+		.then(apiRes => {
 			const { username, userId, loggedIn } = req.session
 			// console.log('this is the api res', apiRes)
 			const onePlant = apiRes.data
-			console.log('this is the plant', onePlant)
+			// console.log('this is the plant', onePlant)
             // const {username, loggedIn, userId} = req.session
 			res.render('plants/show', { plant:onePlant, username, userId, loggedIn })
 		})

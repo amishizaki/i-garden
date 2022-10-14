@@ -1,32 +1,57 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
-    <article>
-        <h2>
-            {{ plant.name }}
-        </h2>
-        <h3>{{ plant.scientific_name }}</h3>
-        <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.image }} alt={{ plant.name }}>
-        <h4>{{ plant.description }}</h4>
-        {%- comment -%} <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
-        <h4>{{ plant.perrenial }} </h4>
-        <h5>Sun requirements: {{ plant.sun_requirement }}</h5>
-        {%- comment -%} should this be author? {%- endcomment -%}
-        {% if user.owner == userId %}
-            <div class="btn-group">
-                <a href="/plants/{{ plant.id }}/edit" class="btn btn-primary">Edit</a>
-                <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="btn btn-danger">
+    <div class="container-md">
+        <article>
+            <h2>
+                {{ plant.name }}
+            </h2>
+            <h3>{{ plant.scientific_name }}</h3>
+            <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.image }} alt={{ plant.name }}>
+            <h4>{{ plant.description }}</h4>
+            {%- comment -%} <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
+            <h4>{{ plant.perrenial }} </h4>
+            <h5>Sun requirements: {{ plant.sun_requirement }}</h5>
+            {%- comment -%} should this be author? {%- endcomment -%}
+            {% if plant.owner == userId %}
+                <div class="btn-group">
+                    <a href="/plants/{{ plant.id }}/edit" class="btn btn-success">Edit</a>
+                    <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </div>
+            {% endif %}
+        </article>
+        {%- comment -%} <hr>
+        <h4>comments</h4>
+        <hr> {%- endcomment -%}
+        {% if loggedIn %}
+            <div class="col-md-6">
+                {%- comment -%} favorites go here {%- endcomment -%}
+                <form action="/comments/{{plant.id}}" method="POST">
+                    <fieldset>
+                        <legend>Add Comment</legend>
+                        <label class="form-label">comment:</label>
+                        <input class="form-control mb-1" type="text" placeholder="comment goes here..." name="note" required>
+                    </fieldset>
+                    <input class="btn btn-success" type="submit" value="add comment">
                 </form>
             </div>
+        {% else %}
+            <div class="col-md-6">
+                <small>If you'd like to leave a comment, please log in...</small>
+            </div>
         {% endif %}
-    </article>
-</div>
+        <hr>
+        {% if plant.comments.length > 0%}
+            <div class="container-sm justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    {% for comment in plant.comments %}
+                        {% render '../comment.liquid', comment: comment, userId: userId, plant: plant %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <small>no comments yet...</small>
+        {% endif %}
+    </div>
 {% endblock %}
-
-{%- comment -%} keep this just in case {%- endcomment -%}
-            {%- comment -%} {% if example.ready %}
-            Ready
-            {% else %}
-            Not Ready
-            {%endif%} {%- endcomment -%}

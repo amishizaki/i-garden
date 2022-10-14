@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/plants" method="POST">
+    <form action="/plants/{{plant.id}}?method=PUT" method="POST">
         <fieldset>
             <legend>Edit {{plant.name}}</legend>
             <label class="form-label">Name: </label>
@@ -34,7 +34,7 @@
                 <option value="Perennial">Perennial</option>
                 <option value="Annual">Annual</option>
             </select>
-            <label class="form-label">Sun conditions:</label><br>
+            <label class="form-label">Sun conditions:</label>
             <select class="form-select" aria-label="Default select example" name="sun_requirement">
                 <option selected aria-placeholder=""></option>
                 <option value="Full sun">Full sun</option>
@@ -42,9 +42,8 @@
                 <option value="Part shade">Part shade</option>
                 <option value="Full shade">Full shade</option>
             </select>
-            <label class="form-label">Ready:</label>
         </fieldset>
-        <input type="submit" value="Edit {{plant.name}}" class="btn btn-success">
+        <input type="submit" value="Submit Edits for {{plant.name}}" class="btn btn-success">
     </form>
 </div>
 {% endblock %}
