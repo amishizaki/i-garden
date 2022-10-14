@@ -3,11 +3,13 @@
 ////////////////////
 require("dotenv").config() // make env variables available
 const express = require("express")
+
+const path = require("path") // do I need this?
 const middleware = require('./utils/middleware')
 const PlantRouter = require('./controllers/plant')
 const UserRouter = require('./controllers/user')
 const CommentRouter = require('./controllers/comment')
-const User = require("./models/user")
+const User = require("./models/user") // is this correct?
 
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
@@ -25,7 +27,7 @@ middleware(app)
 
 app.use(express.static('public'))
 app.use('/auth', UserRouter)
-app.use('/comments', CommentRouter)
+app.use('/comment', CommentRouter)
 app.use('/plants', PlantRouter)
 
 app.get('/', (req, res) => {

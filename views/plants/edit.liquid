@@ -29,14 +29,14 @@
                 value="{{ plant.description }}" 
             ></textarea>
             <label class="form-label">Perennial or Annual:</label>
-            <select class="form-select" aria-label="Default select example" name="perrenial">
+            <select class="form-select" aria-label="{{ plant.perennial }}" name="perrenial">
                 <option selected>Perennial or Annual</option>
                 <option value="Perennial">Perennial</option>
                 <option value="Annual">Annual</option>
             </select>
             <label class="form-label">Sun conditions:</label>
-            <select class="form-select" aria-label="Default select example" name="sun_requirement">
-                <option selected aria-placeholder=""></option>
+            <select class="form-select" aria-label="Default select example" name="sun_requirement" aria-placeholder="{{ plant.sun_requirement }}">
+                <option selected aria-placeholder="{{ plant.sun_requirement }}"></option>
                 <option value="Full sun">Full sun</option>
                 <option value="Part sun">Part sun</option>
                 <option value="Part shade">Part shade</option>

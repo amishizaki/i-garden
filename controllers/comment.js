@@ -61,7 +61,7 @@ router.delete('/delete/:plantId/:commId', (req, res) => {
             if (req.session.loggedIn) {
                 // only let the author of the comment delete it
                 if (theComment.author == req.session.userId) {
-                    
+                    console.log('this is theComment', theComment)
                     // find some way to remove the comment
                     // here's another built in method
                     theComment.remove()
@@ -71,11 +71,13 @@ router.delete('/delete/:plantId/:commId', (req, res) => {
                     // return plant.save()
                 } else {
                     const err = 'you%20are%20not%20authorized%20for%20this%20action'
-                    res.redirect(`/error?error=${err}`)
+                    // res.redirect(`/error?error=${err}`)
+                    console.log('err1', err)
                 }
             } else {
                 const err = 'you%20are%20not%20authorized%20for%20this%20action'
-                res.redirect(`/error?error=${err}`)
+                // res.redirect(`/error?error=${err}`)
+                console.log('err2', err)
             }
         })
         // send an error if error
