@@ -44,7 +44,7 @@ router.post("/:plantId", (req, res) => {
 
 // DELETE
 // only the author of the comment can delete it
-router.delete('mine/delete/:plantId/:commId', (req, res) => {
+router.delete('/delete/:plantId/:commId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const plantId = req.params.plantId 
     const commId = req.params.commId
