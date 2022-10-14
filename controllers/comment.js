@@ -44,10 +44,11 @@ router.post("/:plantId", (req, res) => {
 
 // DELETE
 // only the author of the comment can delete it
-router.delete('/delete/:plantId/:commId', (req, res) => {
+router.delete('mine/delete/:plantId/:commId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const plantId = req.params.plantId 
     const commId = req.params.commId
+    console.log('this is the commId', commId)
     // get the plant
     Plant.findById(plantId)
         .then(plant => {
@@ -60,11 +61,12 @@ router.delete('/delete/:plantId/:commId', (req, res) => {
             if (req.session.loggedIn) {
                 // only let the author of the comment delete it
                 if (theComment.author == req.session.userId) {
+                    
                     // find some way to remove the comment
                     // here's another built in method
                     theComment.remove()
                     plant.save()
-                    res.redirect(`/plants/${plant.id}`)
+                    res.redirect(`/plants/mine/${plant.id}`)
                     // return the saved plant
                     // return plant.save()
                 } else {
