@@ -9,7 +9,7 @@ const { Schema } = mongoose
 
 // favorite schema
 const favoriteSchema = new Schema({
-    checkBox: {
+    favorited: {
         type: Boolean,
         required: true
     },

@@ -76,7 +76,7 @@ router.post('/', (req, res) => {
 		.then(plant => {
 			console.log('this was returned from create', plant)
 			// should I have this redirect or render the new plant page?
-			res.redirect('/plants')
+			res.redirect('/plants/mine/')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -101,7 +101,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // update route
-router.put('/:name', (req, res) => {
+router.put('/:id', (req, res) => {
 	
 	const plantId = req.params.id
 	req.body.ready = req.body.ready === 'on' ? true : false
