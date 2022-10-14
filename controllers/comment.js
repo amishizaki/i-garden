@@ -35,7 +35,7 @@ router.post("/:plantId", (req, res) => {
         })
         .then(plant => {
             // res.status(200).json({ plant: plant })
-            res.redirect(`/plants/${plant.id}`)
+            res.redirect(`/plants/mine/${plant.id}`)
         })
         // do something else if it doesn't work
         //  --> send some kind of error depending on what went wrong
