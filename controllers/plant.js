@@ -24,7 +24,12 @@ router.use((req, res, next) => {
 
 // Routes
 
+
+/////////////////////////////////////
+///// All Plants
+////////////////////////////////////
 // index ALL
+// Currently, does not include user created plants
 router.get('/', (req, res) => { 
 	// axios.get(`https://www.growstuff.org/api/v1/crops`)
 	axios.get(`https://www.growstuff.org/crops.json`)
@@ -45,6 +50,9 @@ router.get('/', (req, res) => {
 		})
 })
 
+/////////////////////////////////////
+///// User's Plants
+////////////////////////////////////
 // index that shows only the user's plants
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
@@ -58,6 +66,9 @@ router.get('/mine', (req, res) => {
 		})
 })
 
+/////////////////////////////////////
+///// New Plant form
+////////////////////////////////////
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
 	const username = req.session.username
@@ -67,6 +78,9 @@ router.get('/new', (req, res) => {
 	res.render('plants/new', { username, loggedIn, userId })
 })
 
+/////////////////////////////////////
+///// Creates new plant
+////////////////////////////////////
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
 	req.body.ready = req.body.ready === 'on' ? true : false
@@ -83,6 +97,10 @@ router.post('/', (req, res) => {
 		})
 })
 
+
+/////////////////////////////////////
+///// Edit Page
+////////////////////////////////////
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
 	const { username, userId, loggedIn } = req.session
@@ -100,15 +118,20 @@ router.get('/:id/edit', (req, res) => {
 		})
 })
 
+/////////////////////////////////////
+///// Submit New Edits
+////////////////////////////////////
 // update route
 router.put('/:id', (req, res) => {
-	
+	// console.log('request', req.body)
+	// console.log('request params', req.params)
 	const plantId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
+	// req.body.ready = req.body.ready === 'on' ? true : false
 
 	Plant.findByIdAndUpdate(plantId, req.body, { new: true })
-		.then(plant => {
-			res.redirect(`/plants/${plant.id}`)
+	.then(plant => {
+			// console.log('plant, after find and update', plant)
+			res.redirect(`/plants/mine/${plant._id}`)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
