@@ -11,12 +11,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                     <a href="/plants" class="nav-link text-light">All Plants</a>
                 {% if loggedIn %}
-                    <a href="/plants/new" class="nav-link text-light">New Plant</a>
-                    <a href="/plants/mine" class="nav-link text-light">My Plants</a>
-                    <a href="/auth/logout" class="nav-link text-light">Log Out</a>
+                    <a class="nav-link text-light" href="/plants/new">New Plant</a>
+                    <a class="nav-link text-light" href="/plants/mine">My Plants</a>
+                    <a class="nav-link text-light" href="/auth/logout">Log Out</a>
                 {% else %}
-                    <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
-                    <a href="/auth/login" class="nav-link text-light">Sign In</a>
+                    <a class="nav-link text-light" href="/auth/signup">Sign Up</a>
+                    <a class="nav-link text-light" href="/auth/login">Sign In</a>
                 {% endif %}
             </div>
         </div>

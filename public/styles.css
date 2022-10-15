@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap');
 
 body {
-    background-color: gray;
     font-family: 'Swanky and Moo Moo', cursive;
+    color: rgb(84, 84, 84);
     background-image: url(/welcomePage.jpg);
+    background-color: gray;
     background-repeat: no-repeat;
-    border-image:auto;
     background-size:cover;
     display: block;
     margin-left: auto;
@@ -16,9 +16,8 @@ body {
     text-align: center;
 }
 
-.card {
-    margin: 5px;
-    background-color: blanchedalmond;
+.navbar {
+    font-size: 21px;
 }
 
 /* div for login.liquid */
@@ -26,28 +25,47 @@ body {
     text-align: center;
 }
 
-legend {
+/* legend {
     margin: 10px;
-}
+} */
 
 .form-label {
     margin: 10px;
 }
 
-.display-4 {
-    margin-top: 20px;
+/* welcome pages */
+.intro {
+    margin-top: 60px;
+    /* margin-bottom: 0; */
 }
 
+.subIntro {
+    margin-top: 10px;
+}
 
 /* input boxes */
 .form-control {
+    font-size: 20px;
     margin: auto;
-    border: 10px solid none;
     margin-top: 10px;
+    border: 10px solid none;
     padding: 10px;
     width: auto;
 }
 
 .btn {
+    font-size: 20px;
     margin: 10px;
+}
+
+.row {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 40%; */
+}
+
+.card {
+    margin: 5px;
+    background-color: blanchedalmond;
 }
