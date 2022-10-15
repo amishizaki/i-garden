@@ -12,7 +12,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     /* background-position: center; */
-    overflow: hidden;
     text-align: center;
 }
 
@@ -58,6 +57,7 @@ body {
     margin: 10px;
 }
 
+/* all plants */
 .row {
     display: inline-flex;
     margin-left: auto;
@@ -65,7 +65,14 @@ body {
     /* width: 40%; */
 }
 
+/* all plants */
 .card {
     margin: 5px;
     background-color: blanchedalmond;
+}
+
+/* all plants */
+.display-6 {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

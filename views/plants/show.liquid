@@ -7,9 +7,15 @@
             <hr> {%- endcomment -%}
             {% if loggedIn %}
                 <div class="col-md-6">
+
                     <form action="/favorites/{{plant.id}}" method="POST">
-                    <input class="btn btn-success" type="submit" value="add to favorites <3">
+                        {%- comment -%} <i class="bi bi-heart"></i> {%- endcomment -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg>
+                        {%- comment -%} <input class="btn btn-success" type="submit" value="add to favorites <3"> {%- endcomment -%}
                     </form>
+                    
                 </div>
             {% else %}
                 <div class="col-md-6">
@@ -17,26 +23,35 @@
                 </div>
             {% endif %}
             <hr>
+
             <h2>
                 {{ plant.name }}
             </h2>
+
             <h3>{{ plant.openfarm_data.attributes.binomial_name }}</h3>
             {% if plant.openfarm_data.attributes.main_image_path == null %}
                 <h4>(No image yet...)</h4>
             {% else %}
                 {%- comment -%}  centers image, but removes blocking: position-absolute top-50 start-50 translate-middle {%- endcomment -%}
-                {%- comment -%} rounded feature is not working - why? {%- endcomment -%}
-                <img class="img-fluid rounded-5 mx-auto" style="width: 50%; height: auto;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
+                {%- comment -%} rounded feature is not working - is it not supported by my version? {%- endcomment -%}
+                <img class="img-fluid img-thumbnail mx-auto" style="width: 50%; height: auto;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
             {% endif %}
-            <h4>{{ plant.openfarm_data.attributes.description }}</h4>
+            
+            <h4 style="color:antiquewhite; margin-left: auto; margin-right: auto; width: 50%; margin-top: 20px; " >{{ plant.openfarm_data.attributes.description }}</h4>
+            
             {%- comment -%} this is shorthand for below, but it wasn't working <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
-            <h4>{% if plant.perennial == 'true' %}
+
+            <h4 style="color:antiquewhite" style="marigin-top: 40px">{% if plant.perennial == 'true' %}
                 Perennial
             {% else %}
                 Annual
             {% endif %}
             </h4>
-            <h5>Sun requirements: {{ plant.openfarm_data.attributes.sun_requirements }}</h5>
+
+            <h4 style="color:antiquewhite">
+                Sun requirements: {{ plant.openfarm_data.attributes.sun_requirements }}
+            </h4>
+
             {%- comment -%} should this be author? {%- endcomment -%}
             {% if user.owner == userId %}
                 <div class="btn-group">
@@ -54,8 +69,8 @@
             <div class="col-md-6">
                 <form action="/comment/{{plant.id}}" method="POST">
                     <fieldset>
-                        <legend>Add Comment</legend>
-                        <label class="form-label">comment:</label>
+                        <legend style="color:antiquewhite">Add Comment:</legend>
+                        {%- comment -%} <label class="form-label" style="color:antiquewhite">comment:</label> {%- endcomment -%}
                         <input class="form-control mb-1" type="text" placeholder="comment goes here..." name="note" required>
                     </fieldset>
                     <input class="btn btn-success" type="submit" value="add comment">
@@ -63,7 +78,7 @@
             </div>
         {% else %}
             <div class="col-md-6">
-                <small>If you'd like to leave a comment, please log in...</small>
+                <small style="color:antiquewhite">If you'd like to leave a comment, please log in...</small>
             </div>
         {% endif %}
         <hr>
@@ -76,7 +91,7 @@
                 </div>
             </div>
         {% else %}
-            <small>no comments yet...</small>
+            <small style="color:antiquewhite">no comments yet...</small>
         {% endif %}
     </div>
 
