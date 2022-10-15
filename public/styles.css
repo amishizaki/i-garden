@@ -1,14 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap');
 
 body {
     background-color: gray;
-    font-family: 'Indie Flower', cursive;
-    /* background-image: url(/welcomePage.jpg);
+    font-family: 'Swanky and Moo Moo', cursive;
+    background-image: url(/welcomePage.jpg);
     background-repeat: no-repeat;
-    background-size: cover; */
+    border-image:auto;
+    background-size:cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-position: center; */
+    overflow: hidden;
+    text-align: center;
 }
 
-/* img {
-    width: 200px;
-    height: 200px;
-} */
+.card {
+    margin: 5px;
+    background-color: blanchedalmond;
+}
+
+/* div for login.liquid */
+.container-sm {
+    text-align: center;
+}
+
+legend {
+    margin: 10px;
+}
+
+.form-label {
+    margin: 10px;
+}
+
+.display-4 {
+    margin-top: 20px;
+}
+
+
+/* input boxes */
+.form-control {
+    margin: auto;
+    border: 10px solid none;
+    margin-top: 10px;
+    padding: 10px;
+    width: auto;
+}
+
+.btn {
+    margin: 10px;
+}

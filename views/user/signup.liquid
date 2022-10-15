@@ -4,11 +4,11 @@
 <div class="container-sm">
     <form action="/auth/signup" method="POST">
         <fieldset>
-            <legend>Join the Garden Community!</legend>
-            <label class="form-label">Username: </label>
-            <input type="text" name="username" placeholder="username" class="form-control" required>
-            <label class="form-label">Password</label>
-            <input type="password" name="password" placeholder="enter password" class="form-control" required>
+            <legend><h1>Join the Garden Community!</h1></legend>
+            {%- comment -%} <label class="form-label">Username: </label> {%- endcomment -%}
+            <input class="form-control" type="text" name="username" placeholder="username" required>
+            {%- comment -%} <label class="form-label">Password</label> {%- endcomment -%}
+            <input class="form-control" type="password" name="password" placeholder="enter password" required>
         </fieldset>
         <input type="submit" value="Create Account" class="btn btn-success">
     </form>

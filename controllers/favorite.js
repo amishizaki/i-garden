@@ -28,7 +28,7 @@ router.post("/:plantId", (req, res) => {
         // do something if it works
         //  --> send a success response status and maybe the favorite? maybe the plant?
         .then(plant => {
-            // push the comment into the plant.comments array - do favorites need to be pushed?
+            // push the favorite into the plant.favorites array - do favorites need to be pushed?
             plant.favorite.push(req.body)
             // we need to save the plant
             return plant.save()
@@ -47,22 +47,22 @@ router.post("/:plantId", (req, res) => {
 router.delete('/delete/:plantId/:favId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const plantId = req.params.plantId 
-    const commId = req.params.commId
+    const favId = req.params.favId
     // get the plant
     Plant.findById(plantId)
         .then(plant => {
             // get the favorite
             // subdocs have a built in method that you can use to access specific subdocuments when you need to.
             // this built in method is called .id()
-            const theComment = plant.comments.id(commId)
-            console.log('this is the comment that was found', theComment)
+            const theFavorite = plant.favorites.id(favId)
+            console.log('this is the favorite that was found', theFavorite)
             // make sure the user is logged in
             if (req.session.loggedIn) {
-                // only let the author of the comment delete it
-                if (theComment.author == req.session.userId) {
-                    // find some way to remove the comment
+                // only let the author of the favorite delete it
+                if (theFavorite.author == req.session.userId) {
+                    // find some way to remove the favorite
                     // here's another built in method
-                    theComment.remove()
+                    theFavorite.remove()
                     plant.save()
                     res.redirect(`/plants/${plant.id}`)
                     // return the saved plant

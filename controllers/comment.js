@@ -12,8 +12,9 @@ const router = express.Router()
 /////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
-// POST
+// POST a Comment
 // only loggedIn users can post comments
+//////////////////////////////////////////////
 router.post("/:plantId", (req, res) => {
     const plantId = req.params.plantId
 
@@ -23,6 +24,7 @@ router.post("/:plantId", (req, res) => {
     } else {
         res.sendStatus(401)
     }
+
     // find a specific plant
     Plant.findById(plantId)
         // do something if it works
@@ -31,19 +33,22 @@ router.post("/:plantId", (req, res) => {
             // push the comment into the plant.comments array
             plant.comments.push(req.body)
             // we need to save the plant
+            // console.log('this is req.body', req.body)
             return plant.save()
         })
         .then(plant => {
             // res.status(200).json({ plant: plant })
-            res.redirect(`/plants/mine/${plant.id}`)
+            res.redirect(`/plants/mine/${plantId}`)
         })
         // do something else if it doesn't work
         //  --> send some kind of error depending on what went wrong
         .catch(err => res.redirect(`/error?error=${err}`))
 })
 
-// DELETE
+////////////////////////////////////////////
+// DELETE Comment
 // only the author of the comment can delete it
+////////////////////////////////////////////
 router.delete('/delete/:plantId/:commId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const plantId = req.params.plantId 

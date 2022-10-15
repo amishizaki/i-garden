@@ -27,10 +27,10 @@
         {% if loggedIn %}
             <div class="col-md-6">
                 {%- comment -%} favorites go here {%- endcomment -%}
-                <form action="/comments/{{plant.id}}" method="POST">
+                <form action="/comment/{{plant.id}}" method="POST">
                     <fieldset>
-                        <legend>Add Comment</legend>
-                        <label class="form-label">comment:</label>
+                        {%- comment -%} <legend>Add Comment</legend> {%- endcomment -%}
+                        <label class="form-label">Add comment:</label>
                         <input class="form-control mb-1" type="text" placeholder="comment goes here..." name="note" required>
                     </fieldset>
                     <input class="btn btn-success" type="submit" value="add comment">
