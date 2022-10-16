@@ -8,9 +8,7 @@ body {
     background-color: gray;
     background-repeat: no-repeat;
     background-size:cover;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /* display: block; */
     /* background-position: center; */
     text-align: center;
 }
@@ -19,9 +17,12 @@ body {
     font-size: 21px;
 }
 
-/* div for login.liquid */
+/* div for login.liquid, new.liquid */
 .container-sm {
+    background-color: rgba(170, 187, 97, 0.5);
+    width: auto;
     text-align: center;
+
 }
 
 /* legend {
@@ -30,6 +31,7 @@ body {
 
 .form-label {
     margin: 10px;
+    text-align: center;
 }
 
 /* welcome pages */
@@ -44,24 +46,24 @@ body {
 
 /* input boxes */
 .form-control {
-    font-size: 20px;
     margin: auto;
     margin-top: 10px;
     border: 10px solid none;
     padding: 10px;
     width: auto;
+    font-size: 20px;
 }
 
 .btn {
-    font-size: 20px;
     margin: 10px;
+    font-size: 20px;
 }
 
 /* all plants */
 .row {
-    display: inline-flex;
     margin-left: auto;
     margin-right: auto;
+    display: inline-flex;
     /* width: 40%; */
 }
 
@@ -75,4 +77,42 @@ body {
 .display-6 {
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+/* api show */
+.container-md {
+    background-color: rgba(170, 187, 97, 0.5);
+    text-align: center;
+    display: grid;
+}
+
+/* api show annual and sun */
+.features {
+    margin: auto;
+    border-top: 1px solid gray;
+    padding: 10px;
+    width: 50%;
+    }
+
+/* api show - comments */
+.commentsDisplay {
+    /* display:inline-block; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* width: auto; */
+    /* margin: auto; */
+    /* padding: 10px; */
+    text-align: center;
+}
+
+/* favorites heart */
+.bi-heart {
+    margin-top: 20px;
+}
+
+/* new.liquid */
+.form-select {
+    margin-left: auto;
+    margin-right: auto;
+    width:fit-content;
 }

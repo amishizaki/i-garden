@@ -1,11 +1,11 @@
 {% block content %}
     <div class="card mb-4 shadow">
         <div class="card-body">
-            <p>{{ comment.note }}</p>
+            {%- comment -%} <p>{{ favorite.note }}</p>
             <div class="d-flex justify-content-between">
-                <small>author: {{ comment.author }}</small>
+                <small>author: {{ favorite.author }}</small> {%- endcomment -%}
                 {% if plant.author == userId %}
-                    <form action="/comment/delete/{{plant.id}}/{{comment.id}}?_method=DELETE" method="POST">
+                    <form action="/favorite/delete/{{plant.id}}/{{favorite.id}}?_method=DELETE" method="POST">
                         <input class="btn btn-warning" type="submit" value="X">
                     </form>
                 {% endif %}

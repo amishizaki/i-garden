@@ -15,6 +15,8 @@ const router = express.Router()
 // POST a Comment
 // only loggedIn users can post comments
 //////////////////////////////////////////////
+// for user created plants
+//////////////////////////////////////////////
 router.post("/:plantId", (req, res) => {
     const plantId = req.params.plantId
 
@@ -39,6 +41,42 @@ router.post("/:plantId", (req, res) => {
         .then(plant => {
             // res.status(200).json({ plant: plant })
             res.redirect(`/plants/mine/${plantId}`)
+        })
+        // do something else if it doesn't work
+        //  --> send some kind of error depending on what went wrong
+        .catch(err => res.redirect(`/error?error=${err}`))
+})
+
+////////////////////////////////////////////
+// POST a Comment
+// only loggedIn users can post comments
+//////////////////////////////////////////////
+// for api plants
+//////////////////////////////////////////////
+router.post("/:plantId", (req, res) => {
+    const plantId = req.params.plantId
+
+    if (req.session.loggedIn) {
+        // we want to adjust req.body so that the author is automatically assigned
+        req.body.author = req.session.userId
+    } else {
+        res.sendStatus(401)
+    }
+
+    // find a specific plant
+    Plant.findById(plantId)
+        // do something if it works
+        //  --> send a success response status and maybe the comment? maybe the plant?
+        .then(plant => {
+            // push the comment into the plant.comments array
+            plant.comments.push(req.body)
+            // we need to save the plant
+            // console.log('this is req.body', req.body)
+            return plant.save()
+        })
+        .then(plant => {
+            // res.status(200).json({ plant: plant })
+            res.redirect(`/plants/${plantId}`)
         })
         // do something else if it doesn't work
         //  --> send some kind of error depending on what went wrong
