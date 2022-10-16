@@ -62,12 +62,12 @@
             {% endif %}
         </article>
 
-        <div class="commentsDisplay">
+        <div class="commentsDisplay" style="margin: auto; width: 30%; padding: 10px;">
             {%- comment -%} <hr>
             <h4>comments</h4>
             <hr> {%- endcomment -%}
             {% if loggedIn %}
-                <div class="col-md-6 justify-content-center">
+                <div class="col-md-6">
                     <form action="/comment/{{plant.id}}" method="POST">
                         <fieldset>
                             <legend style="color:antiquewhite" >New Comment:</legend>
@@ -78,13 +78,13 @@
                     </form>
                 </div>
             {% else %}
-                <div class="col-md-6 justify-content-center">
+                <div class="col-md-6">
                     <small style="color:antiquewhite">If you'd like to leave a comment, please log in...</small>
                 </div>
             {% endif %}
             <hr>
             {% if plant.comments.length > 0%}
-                <div class="container-sm justify-content-center ">
+                <div class="container-sm">
                     <div class="col-md-8 col-lg-6">
                         {% for comment in plant.comments %}
                             {% render '../comment.liquid', comment: comment, userId: userId, plant: plant %}

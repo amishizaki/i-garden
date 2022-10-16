@@ -41,7 +41,7 @@
         <h4>comments</h4>
         <hr> {%- endcomment -%}
         {% if loggedIn %}
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin: auto; width: 50%; padding: 10px;">
                 {%- comment -%} favorites go here {%- endcomment -%}
                 <form action="/comment/{{plant.id}}" method="POST">
                     <fieldset>
@@ -60,7 +60,7 @@
         <hr>
         {% if plant.comments.length > 0%}
             <div class="container-sm">
-                <div class="col-md-8 col-lg-6">
+                <div class="col-md-8 col-lg-6" style="width: 100%;">
                     {% for comment in plant.comments %}
                         {% render '../comment.liquid', comment: comment, userId: userId, plant: plant %}
                     {% endfor %}

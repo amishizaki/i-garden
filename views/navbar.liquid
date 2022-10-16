@@ -14,6 +14,16 @@
                     <a class="nav-link text-light" href="/plants/new">New Plant</a>
                     <a class="nav-link text-light" href="/plants/mine">My Plants</a>
                     <a class="nav-link text-light" href="/auth/logout">Log Out</a>
+                    {%- comment -%} a simpler search bar {%- endcomment -%}
+                    {%- comment -%} <div class="form-outline">
+                        <input class="form-control" type="search" id="form1" placeholder="Type query" for="datatable-search-input" aria-label="Search" />
+                    </div> {%- endcomment -%}
+                    {%- comment -%} <div class="form-outline mb-4">
+                        <input type="search" class="form-control" id="datatable-search-input">
+                        <label class="form-label" for="datatable-search-input">Search</label>
+                    </div>
+                    <div id="datatable">
+                    </div> {%- endcomment -%}
                 {% else %}
                     <a class="nav-link text-light" href="/auth/signup">Sign Up</a>
                     <a class="nav-link text-light" href="/auth/login">Sign In</a>
