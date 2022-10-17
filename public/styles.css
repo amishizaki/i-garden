@@ -94,17 +94,6 @@ body {
     width: 50%;
     }
 
-/* api show - comments */
-.commentsDisplay {
-    /* display:inline-block; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* width: auto; */
-    /* margin: auto; */
-    /* padding: 10px; */
-    text-align: center;
-}
-
 /* favorites heart */
 .bi-heart {
     margin-top: 20px;

@@ -159,6 +159,23 @@ router.get('/:id', (req, res) => {
 			const { username, userId, loggedIn } = req.session
 			// console.log('this is the api res', apiRes)
 			const onePlant = apiRes.data
+			let newPlant = {
+				name: onePlant.name, 
+				scientific_name: onePlant.openfarm_data.attributes.binomial_name,
+				perrenial: onePlant.perrenial,
+				sun_requirement: onePlant.openfarm_data.attributes.sun_requirements,
+				image: {url: onePlant.openfarm_data.attributes.main_image_path},
+
+				}
+				Plant.create(newPlant)
+					.then(plant => {
+						console.log('axios show create plant', plant)
+						// should I have this redirect or render the new plant page?
+						// res.redirect('/plants/mine/')
+					})
+					.catch(error => {
+						res.redirect(`/error?error=${error}`)
+					})
 			// console.log('this is the plant', onePlant)
             // const {username, loggedIn, userId} = req.session
 			res.render('plants/show', { plant:onePlant, username, userId, loggedIn })
@@ -167,6 +184,13 @@ router.get('/:id', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
+
+// name: { type: String, required: true },
+		// scientific_name: { type: String, required: true },
+		// description: { type: String, required: false },
+		// perrenial: { type: String, required: false },
+		// sun_requirement: { type: String, required: false },
+		// image: { type: Object, required: false },
 
 // delete route
 router.delete('/:id', (req, res) => {

@@ -2,6 +2,7 @@
 // Import Dependencies
 ////////////////////////////////////////
 const express = require("express")
+const axios = require('axios')
 const Plant = require("../models/plant")
 
 /////////////////////////////////////////
@@ -65,6 +66,7 @@ router.post("/:plantId", (req, res) => {
 
     // find a specific plant
     Plant.findById(plantId)
+    // axios.get(`https://www.growstuff.org/crops/${plantId}.json`)
         // do something if it works
         //  --> send a success response status and maybe the comment? maybe the plant?
         .then(plant => {
