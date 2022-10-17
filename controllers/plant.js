@@ -142,6 +142,7 @@ router.put('/:id', (req, res) => {
 router.get('/mine/:id', (req, res) => {
 	const { username, userId, loggedIn } = req.session
 	Plant.findById(req.params.id)
+		.populate("comments.author", "username")
 		.then(plant => {
 			res.render('plants/showUserPlant', { plant, username, userId, loggedIn })
 		})
@@ -150,32 +151,35 @@ router.get('/mine/:id', (req, res) => {
 		})
 })
 
-// show route
+// show api plants
+// SHOW REQUEST route
 router.get('/:id', (req, res) => {
 	const plantId = req.params.id
 	// console.log('this is the plant name', plantName)
 	axios.get(`https://www.growstuff.org/crops/${plantId}.json`)
+		// .populate("comments.author", "username")
 		.then(apiRes => {
 			const { username, userId, loggedIn } = req.session
 			// console.log('this is the api res', apiRes)
 			const onePlant = apiRes.data
-			let newPlant = {
-				name: onePlant.name, 
-				scientific_name: onePlant.openfarm_data.attributes.binomial_name,
-				perrenial: onePlant.perrenial,
-				sun_requirement: onePlant.openfarm_data.attributes.sun_requirements,
-				image: {url: onePlant.openfarm_data.attributes.main_image_path},
+			// The code below was used to add a few plants to the mongoDB instead of using a for loop?
+			// let newPlant = {
+			// 	name: onePlant.name, 
+			// 	scientific_name: onePlant.openfarm_data.attributes.binomial_name,
+			// 	perrenial: onePlant.perrenial,
+			// 	sun_requirement: onePlant.openfarm_data.attributes.sun_requirements,
+			// 	image: {url: onePlant.openfarm_data.attributes.main_image_path},
 
-				}
-				Plant.create(newPlant)
-					.then(plant => {
-						console.log('axios show create plant', plant)
-						// should I have this redirect or render the new plant page?
-						// res.redirect('/plants/mine/')
-					})
-					.catch(error => {
-						res.redirect(`/error?error=${error}`)
-					})
+			// 	}
+				// Plant.create(newPlant)
+				// 	.then(plant => {
+				// 		console.log('axios show create plant', plant)
+				// 		// should I have this redirect or render the new plant page?
+				// 		// res.redirect('/plants/mine/')
+				// 	})
+				// 	.catch(error => {
+				// 		res.redirect(`/error?error=${error}`)
+				// 	})
 			// console.log('this is the plant', onePlant)
             // const {username, loggedIn, userId} = req.session
 			res.render('plants/show', { plant:onePlant, username, userId, loggedIn })

@@ -3,7 +3,7 @@
         <div class="card-body">
             <p>{{ comment.note }}</p>
             <div class="d-flex justify-content-between">
-                <small>author: {{ comment.author }}</small>
+                <small>author: {{ comment.author.username }}</small>
                 {% if plant.author == userId %}
                     <form action="/comment/delete/{{plant.id}}/{{comment.id}}?_method=DELETE" method="POST">
                         <input class="btn btn-warning" type="submit" value="X">
