@@ -20,9 +20,8 @@ body {
 /* div for login.liquid, new.liquid */
 .container-sm {
     background-color: rgba(170, 187, 97, 0.5);
-    width: auto;
+    width: 50%;
     text-align: center;
-
 }
 
 /* legend {
@@ -79,7 +78,7 @@ body {
     margin-bottom: 30px;
 }
 
-/* api show */
+/* api and user data show */
 .container-md {
     background-color: rgba(170, 187, 97, 0.5);
     text-align: center;
@@ -104,4 +103,9 @@ body {
     margin-left: auto;
     margin-right: auto;
     width:fit-content;
+}
+
+hr {
+    size: 10px;
+    color: rgb(43, 43, 43);
 }
