@@ -16,6 +16,10 @@ db.on('open', () => {
         // scientific_name
         // thumbnail_url
         // The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+        axios.get ('https://www.growstuff.org/crops/${plant.id}.json')
+        
+
         const myPlant = {
             // here goes my key value pairs from json
         
