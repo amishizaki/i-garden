@@ -35,10 +35,8 @@
 
             <h3>{{ plant.openfarm_data.attributes.binomial_name }}</h3>
             {% if plant.openfarm_data.attributes.main_image_path == null %}
-                <h4>(No image yet...)</h4>
+                <h4 style="margin=20px">(No image yet...)</h4>
             {% else %}
-                {%- comment -%}  centers image, but removes blocking: position-absolute top-50 start-50 translate-middle {%- endcomment -%}
-                {%- comment -%} rounded feature is not working - is it not supported by my version? {%- endcomment -%}
                 <img class="img-fluid img-thumbnail mx-auto" style="width: 50%; height: auto;" src={{ plant.openfarm_data.attributes.main_image_path }} alt={{ plant.name }}>
             {% endif %}
             
@@ -47,11 +45,12 @@
             {%- comment -%} this is shorthand for below, but it wasn't working <h6>{{ plant.perennial? 'Perennial' :'Annual' }} </h6> {%- endcomment -%}
             
             <div class="features">
-                <h4 style="color:antiquewhite" style="marigin-top: 40px">{% if plant.perennial == 'true' %}
-                    Perennial
-                {% else %}
-                    Annual
-                {% endif %}
+                <h4 style="color:antiquewhite" style="marigin-top: 40px">
+                    {% if plant.perennial == 'true' %}
+                        Perennial
+                    {% else %}
+                        Annual
+                    {% endif %}
                 </h4>
 
                 <h4 style="color:antiquewhite">
@@ -59,10 +58,9 @@
                 </h4>
             </div>
 
-            {%- comment -%} should this be author? {%- endcomment -%}
             {% if user.owner == userId %}
                 <div class="btn-group">
-                    <a href="/plants/{{ plant.name }}/edit" class="btn btn-primary">Edit</a>
+                    <a href="/plants/{{ plant.name }}/edit" class="btn btn-success">Edit</a>
                     <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
                         <input type="submit" value="Delete" class="btn btn-danger">
                     </form>
@@ -70,9 +68,8 @@
             {% endif %}
         </article>
 
-        <div class="commentsDisplay" style="margin: auto; width: 30%; padding: 10px;">
-            {% if loggedIn %}
-                <div class="col-md-6">
+        {% if loggedIn %}
+                <div class="col-md-6" style="margin: auto; width: 50%; padding: 10px;">
                     <form action="/comment/{{plant.id}}" method="POST">
                         <fieldset>
                             <legend style="color:antiquewhite" >New Comment:</legend>
@@ -81,15 +78,15 @@
                         <input class="btn btn-success" type="submit" value="add comment">
                     </form>
                 </div>
-            {% else %}
+        {% else %}
                 <div class="col-md-6">
                     <small style="color:antiquewhite">If you'd like to leave a comment, please log in...</small>
                 </div>
-            {% endif %}
+        {% endif %}
             <hr>
             {% if plant.comments.length > 0%}
-                <div class="container-sm">
-                    <div class="col-md-8 col-lg-6">
+                <div class="container">
+                    <div class="col-md-8 col-lg-6" style="margin: auto; width: 50%; padding: 10px;">
                         {% for comment in plant.comments %}
                             {% render '../comment.liquid', comment: comment, userId: userId, plant: plant %}
                         {% endfor %}
