@@ -6,7 +6,7 @@ const DATABASE_URL = process.env.DATABASE_URL
 const DEPLOYED_URL = process.env.DEPLOYED_URL
 
 // connect to the database
-mongoose.connect(DATABASE_URL, {
+mongoose.connect(DEPLOYED_URL, {
 	useUnifiedTopology: true,
 	useNewUrlParser: true,
 })
