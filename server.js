@@ -1,14 +1,17 @@
 ////////////////////
 //  Dependencies  //
 ////////////////////
+// Nit: choose either double or single quotes
 require("dotenv").config() // make env variables available
 const express = require("express")
 
+// You do not remove :)
 const path = require("path") // do I need this?
 const middleware = require('./utils/middleware')
 const PlantRouter = require('./controllers/plant')
 const UserRouter = require('./controllers/user')
 const CommentRouter = require('./controllers/comment')
+// Good question also remove unneeded import
 const User = require("./models/user") // is this correct?
 
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
