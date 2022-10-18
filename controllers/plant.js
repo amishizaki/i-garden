@@ -2,6 +2,7 @@
 const express = require('express')
 const axios = require('axios')
 const Plant = require('../models/plant')
+// Anoher wonderful question, remove this unneeded and unused
 const { index } = require('../models/comment')
 // is {index} supposed to be something else?
 
@@ -45,6 +46,7 @@ router.get('/', (req, res) => {
 		})
 		
 		.catch(err=>{
+			// Nit: remove console.error
 			console.error('Error:', err)
 			res.json(err)
 		})
@@ -103,6 +105,7 @@ router.post('/', (req, res) => {
 	
 	req.body.owner = req.session.userId
 	Plant.create(req.body)
+	// Nit: remove unused `plant`
 		.then(plant => {
 			// console.log('this was returned from create', plant)
 			// should I have this redirect or render the new plant page?
@@ -158,6 +161,7 @@ router.put('/:id', (req, res) => {
 router.get('/mine/:id', (req, res) => {
 	const { username, userId, loggedIn } = req.session
 	Plant.findById(req.params.id)
+	// Nit: choose either double or single quotes
 		.populate("comments.author", "username")
 		.then(plant => {
 			res.render('plants/showUserPlant', { plant, username, userId, loggedIn })
@@ -216,6 +220,7 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
 	const plantId = req.params.id
 	Plant.findByIdAndRemove(plantId)
+	// Nit: can remove unused `plant`
 		.then(plant => {
 			res.redirect('/plants')
 		})

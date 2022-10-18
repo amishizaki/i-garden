@@ -1,7 +1,9 @@
 ////////////////////////////////////////
 // Import Dependencies
 ////////////////////////////////////////
+// Nit: choose either single or double quotes
 const express = require("express")
+// Nit: remove unused axios import
 const axios = require('axios')
 const Plant = require("../models/plant")
 
@@ -18,6 +20,7 @@ const router = express.Router()
 //////////////////////////////////////////////
 // for user created plants
 //////////////////////////////////////////////
+// Nit: choose either single or double quotes
 router.post("/:plantId", (req, res) => {
     const plantId = req.params.plantId
 
@@ -39,6 +42,7 @@ router.post("/:plantId", (req, res) => {
             // console.log('this is req.body', req.body)
             return plant.save()
         })
+        // Nit: remove unused `plant`
         .then(plant => {
             // res.status(200).json({ plant: plant })
             res.redirect(`/plants/mine/${plantId}`)
@@ -54,6 +58,7 @@ router.post("/:plantId", (req, res) => {
 //////////////////////////////////////////////
 // for api plants
 //////////////////////////////////////////////
+// Nit: choose either single or double quotes
 router.post("/:plantId", (req, res) => {
     const plantId = req.params.plantId
 
@@ -76,6 +81,7 @@ router.post("/:plantId", (req, res) => {
             // console.log('this is req.body', req.body)
             return plant.save()
         })
+        // Nit: remove unused `plant`
         .then(plant => {
             // res.status(200).json({ plant: plant })
             res.redirect(`/plants/${plantId}`)
@@ -93,6 +99,7 @@ router.delete('/delete/:plantId/:commId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const plantId = req.params.plantId 
     const commId = req.params.commId
+    // Nit: remove console.log
     console.log('this is the commId', commId)
     // get the plant
     Plant.findById(plantId)
@@ -101,11 +108,13 @@ router.delete('/delete/:plantId/:commId', (req, res) => {
             // subdocs have a built in method that you can use to access specific subdocuments when you need to.
             // this built in method is called .id()
             const theComment = plant.comments.id(commId)
+            // Nit: remove console.log
             console.log('this is the comment that was found', theComment)
             // make sure the user is logged in
             if (req.session.loggedIn) {
                 // only let the author of the comment delete it
                 if (theComment.author == req.session.userId) {
+                    // Nit: remove console.log
                     console.log('this is theComment', theComment)
                     // find some way to remove the comment
                     // here's another built in method
@@ -117,11 +126,13 @@ router.delete('/delete/:plantId/:commId', (req, res) => {
                 } else {
                     const err = 'you%20are%20not%20authorized%20for%20this%20action'
                     // res.redirect(`/error?error=${err}`)
+                    // Should be sending this to the user and not just console.logging it
                     console.log('err1', err)
                 }
             } else {
                 const err = 'you%20are%20not%20authorized%20for%20this%20action'
                 // res.redirect(`/error?error=${err}`)
+                // Same comment as above
                 console.log('err2', err)
             }
         })

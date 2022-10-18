@@ -14,6 +14,7 @@ const router = express.Router()
 ////////////////////////////////////////////
 // POST
 // only loggedIn users can favorite plants
+// Nit: choose either double or single quotes
 router.post("/:plantId", (req, res) => {
     const plantId = req.params.plantId
 
@@ -55,6 +56,7 @@ router.delete('/delete/:plantId/:favId', (req, res) => {
             // subdocs have a built in method that you can use to access specific subdocuments when you need to.
             // this built in method is called .id()
             const theFavorite = plant.favorites.id(favId)
+            // Nit: remove console.log
             console.log('this is the favorite that was found', theFavorite)
             // make sure the user is logged in
             if (req.session.loggedIn) {
