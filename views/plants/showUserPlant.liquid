@@ -34,11 +34,11 @@
             </h2>
 
             <h3>{{ plant.scientific_name }}</h3>
-            {% if plant.image == null %}
-                <h4 style="margin=20px">(No image yet...)</h4>
-            {% else %}
-                <img class="img-thumbnail" style="width: 100%; height: 200px;" src={{ plant.image }} alt={{ plant.name }}>
-            {% endif %}
+            {%- comment -%} {% if plant.image == null %}{%- endcomment -%}
+            <h4 style="margin=20px">(No image yet...)</h4> 
+            {%- comment -%} {% else %}src={{ plant.image }} {%- endcomment -%}
+                {%- comment -%} <img class="img-thumbnail" style="width: 100%; height: 200px;" value:(No image yet...) alt={{ plant.name }}> {%- endcomment -%}
+            {%- comment -%} {% endif %} {%- endcomment -%}
 
             <h4 style="color:antiquewhite; margin-left: auto; margin-right: auto; width: 50%; margin-top: 20px;" >{{ plant.description }}</h4>
             
