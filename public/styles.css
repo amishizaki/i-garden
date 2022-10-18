@@ -5,8 +5,11 @@ body {
     font-family: 'Swanky and Moo Moo', cursive;
     color: rgb(84, 84, 84);
     background-image: url(/welcomePage.jpg);
+    opacity: .7;
     background-color: gray;
     background-repeat: no-repeat;
+    background-position: center ;
+    background-attachment: fixed;
     background-size:cover;
     /* display: block; */
     /* background-position: center; */
