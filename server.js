@@ -35,6 +35,12 @@ app.get('/', (req, res) => {
 	res.render('index.liquid', { loggedIn, username, userId })
 })
 
+app.get('/info', (req, res) => {
+	const { username, userId, loggedIn } = req.session
+	res.render('info.liquid', { loggedIn, username, userId })
+	console.log('the info', info.liquid)
+})
+
 app.get('/error', (req, res) => {
 	const error = req.query.error || 'This Page Does Not Exist'
     const { username, loggedIn, userId } = req.session

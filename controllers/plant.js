@@ -67,6 +67,22 @@ router.get('/mine', (req, res) => {
 })
 
 /////////////////////////////////////
+///// User's Plants & API Plants - not working right now bc I feel tangled in data
+////////////////////////////////////
+// router.get('/', (req, res) => {
+//     // destructure user info from req.session
+// 	Plant.find({ owner: userId })
+// 		.populate("comments.author", "username")
+// 		.then(plants => {
+// 			const { username, userId, loggedIn } = req.session
+// 			res.render('plants/show', { plants, username, userId, loggedIn })
+// 		})
+// 		.catch(error => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
+
+/////////////////////////////////////
 ///// New Plant form
 ////////////////////////////////////
 // new route -> GET route that renders our page with the form
@@ -88,7 +104,7 @@ router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
 	Plant.create(req.body)
 		.then(plant => {
-			console.log('this was returned from create', plant)
+			// console.log('this was returned from create', plant)
 			// should I have this redirect or render the new plant page?
 			res.redirect('/plants/mine/')
 		})

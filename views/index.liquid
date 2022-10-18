@@ -1,8 +1,9 @@
 {% layout 'layout.liquid' %}
 {% block content %}
+
     {% if loggedIn %}
         <div class="col-mb-4">
-            <h1 class="intro display-4">So you want to talk about plants, iGardner?</h1>
+            <h1 class="intro display-4">So...<br>you want to talk<br>about plants,<br>iGardner?</h1>
             {%- comment -%} <img class="img-thumbnail img-fluid" src="../gardener-sleeping-on-lawn.jpeg" alt="image of a garden"> {%- endcomment -%}
     {% else %}
         <div class="col-mb-4">
@@ -15,4 +16,5 @@
             <a href="/auth/login" class="btn btn-success">Sign In</a>
         </div>
     {% endif %}
+
 {% endblock %}

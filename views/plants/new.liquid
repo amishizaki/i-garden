@@ -42,15 +42,33 @@
                     <option class="form-control" type="string" value="Part shade">Part shade</option>
                     <option class="form-control" type="string" value="Full shade">Full shade</option>
                 </select>
-                <label class="form-label">Add image:</label><br>
-                <div class="col-sm-2 imgUp" style="margin:auto; width: 50%; padding: 10px">
+
+                {%- comment -%} <label class="form-label">Add image:</label><br> {%- endcomment -%}
+                {%- comment -%} 
+                <form>
+                    <input type="text" id="imagename" value="" />
+                    <input type="button" id="btn" value="GO" />
+                </form>
+                <script type="text/javascript">
+                    document.getElementById('btn').onclick = function() {
+                        const val = document.getElementById('imagename').value,
+                            src = 'http://webpage.com/images/' + val +'.png',
+                            img = document.createElement('img');
+                            img.src = src;
+                            document.body.appendChild(img);
+                        }
+                </script>
+                <img id="the-image"> {%- endcomment -%}
+
+                {%- comment -%} image upload code to be utilized at later date {%- endcomment -%}
+                {%- comment -%} <div class="col-sm-2 imgUp" style="margin:auto; width: 50%; padding: 10px">
                     <div class="imagePreview"></div>
-                    <label class="btn btn-primary">Upload
+                    <label class="btn btn-success">Upload
                     <input class="uploadFile img" type="file" name="image" value="Upload Photo">
-                    {%- comment -%} style="width:0px;height:0px;overflow:hidden;" {%- endcomment -%}
+                    
                     </label>
                     <i class="fa fa-times del"></i>
-                </div>
+                </div> {%- endcomment -%}
             </fieldset>
             <input type="submit" value="Create New Plant" class="btn btn-success" style="margin-bottom: 20px;">
         </form>

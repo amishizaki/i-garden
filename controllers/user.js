@@ -42,6 +42,7 @@ router.post('/signup', async (req, res) => {
 router.get('/login', (req, res) => {
 	res.render('user/login')
 })
+
 // post to send the login info(and create a session)
 router.post('/login', async (req, res) => {
 	// console.log('request object', req)
@@ -68,7 +69,7 @@ router.post('/login', async (req, res) => {
 
           			// const { username, loggedIn, userId } = req.session
 
-					console.log('session user id', req.session.userId)
+					// console.log('session user id', req.session.userId)
 					// redirect to /examples if login is successful
 					res.redirect('/')
 				} else {
@@ -82,7 +83,7 @@ router.post('/login', async (req, res) => {
 		})
 		// catch any other errors that occur
 		.catch((error) => {
-			console.log('the error', error);
+			// console.log('the error', error);
 			
 			res.redirect(`/error?error=${error}`)
 		})
@@ -96,6 +97,8 @@ router.get('/logout', (req, res) => {
 })
 
 
+
+// Will update this soon, I swear, so that people have a warning window before they're logged out
 // // GET
 // // SENDS to the logout page
 // router.get('/logout', (req, res) => {
