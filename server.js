@@ -36,9 +36,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/info', (req, res) => {
-	const { username, userId, loggedIn } = req.session
+    const { username, userId, loggedIn } = req.session
 	res.render('info.liquid', { loggedIn, username, userId })
-	console.log('the info', info.liquid)
 })
 
 app.get('/error', (req, res) => {
