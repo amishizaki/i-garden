@@ -10,7 +10,7 @@ processes = []
 
 [env]
   PORT = "8080"
-  SECRET= "myCatisTheBestestHeIsTheCatsPajamasAndIL0v3Wh3nH3Wak35MeAt5AM"
+  MONGODB_URI= "myCatisTheBestestHeIsTheCatsPajamasAndIL0v3Wh3nH3Wak35MeAt5AM"
   DEPLOYED_URL= "mongodb+srv://alina:simplePassword2022@cluster0.lumocnz.mongodb.net/plantMonster?retryWrites=true&w=majority"
 
 [experimental]

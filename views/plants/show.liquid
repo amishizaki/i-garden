@@ -5,19 +5,37 @@
         <article>
             {% if loggedIn %}
                 <div class="col-md-6">
-
+                    
+                    {%- comment -%} If favorited == null display bi-heart; else display bi-heart-full {%- endcomment -%}
                     <form action="/favorites/{{plant.id}}" method="POST">
                         <button class="btn btn-default" type="submit">
-                            {%- comment -%} empty heart {%- endcomment -%}
+                            {%- comment -%} empty heart - not favorited {%- endcomment -%}
                             <i class="bi bi-heart"></i>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor" class="bi bi-heart justify-content-center" viewBox="0 0 16 16">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                width="16" 
+                                height="16"  
+                                fill="currentColor" 
+                                class="bi bi-heart justify-content-center" 
+                                viewBox="0 0 16 16"
+                            >
                                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                             </svg>
                         </button>
-                        {%- comment -%} full heart {%- endcomment -%}
+                        {%- comment -%} full heart - favorited {%- endcomment -%}
                         {%- comment -%} <i class="bi bi-heart-fill"></i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="16" 
+                            height="16" 
+                            fill="currentColor" 
+                            class="bi bi-heart-fill" 
+                            viewBox="0 0 16 16"
+                        >
+                            <path 
+                                fill-rule="evenodd" 
+                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                            />
                         </svg> {%- endcomment -%}
 
                     </form>
@@ -60,27 +78,54 @@
 
             {% if user.owner == userId %}
                 <div class="btn-group">
-                    <a href="/plants/{{ plant.name }}/edit" class="btn btn-success">Edit</a>
-                    <form action="/plants/{{ plant.id }}?_method=DELETE" method="POST">
-                        <input type="submit" value="Delete" class="btn btn-danger">
+                    <a 
+                        href="/plants/{{ plant.name }}/edit" 
+                        class="btn btn-success">Edit
+                    </a>
+                    <form 
+                        action="/plants/{{ plant.id }}?_method=DELETE" 
+                        method="POST"
+                    >
+                        <input 
+                            type="submit" 
+                            value="Delete" 
+                            class="btn btn-danger"
+                        >
                     </form>
                 </div>
             {% endif %}
         </article>
 
         {% if loggedIn %}
-                <div class="col-md-6" style="margin: auto; width: 50%; padding: 10px;">
+                <div 
+                    class="col-md-6" 
+                    style="margin: auto; width: 50%; padding: 10px;"
+                >
                     <form action="/comment/{{plant.id}}" method="POST">
                         <fieldset>
-                            <legend style="color:antiquewhite" >New Comment:</legend>
-                            <input class="form-control mb-1" type="text" placeholder="comment goes here..." name="note" required>
+                            <legend style="color:antiquewhite" >
+                                New Comment:
+                            </legend>
+                            <input 
+                                class="form-control mb-1" 
+                                type="text" 
+                                placeholder="comment goes here..." 
+                                name="note" 
+                                required
+                            >
                         </fieldset>
-                        <input class="btn btn-success" type="submit" value="add comment">
+                        <input 
+                            class="btn btn-success" 
+                            type="submit" 
+                            value="add comment"
+                        >
                     </form>
                 </div>
         {% else %}
                 <div class="col-md-6">
-                    <small style="color:antiquewhite">If you'd like to leave a comment, please log in...</small>
+                    <small style="color:antiquewhite">
+                        If you'd like to leave a comment, please log in...
+                    </small>
                 </div>
         {% endif %}
             <hr>
